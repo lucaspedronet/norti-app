@@ -1,0 +1,12 @@
+{
+  "name": "norti-app",
+  "displayName": "norti-app",
+  "expo": {
+    "name": "norti-app",
+    "slug": "norti-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
