@@ -1,4 +1,6 @@
+import 'react-native-gesture-handler';
 import React from 'react';
+import { TapGestureHandler, RotationGestureHandler } from 'react-native-gesture-handler';
 import { ThemeProvider } from 'styled-components';
 import AppLoading from 'expo-app-loading';
 import { 
@@ -23,8 +25,12 @@ export default function App() {
   }
 
   return (
-  <ThemeProvider theme={theme}>
-    <Dashboard />
-  </ThemeProvider>
+    <TapGestureHandler>
+      <RotationGestureHandler>
+        <ThemeProvider theme={theme}>
+          <Dashboard />
+        </ThemeProvider>
+      </RotationGestureHandler>
+    </TapGestureHandler>
   )
 }
