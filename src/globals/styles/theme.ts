@@ -17,6 +17,7 @@ export const theme = {
       
       background: '#F0F0F5',
       backgroundCard: '#FFFFFF',
+      transparent: 'transparent',
    },
    fonts: {
       regular: 'Poppins_400Regular',

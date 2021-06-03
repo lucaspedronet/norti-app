@@ -1,67 +1,95 @@
 import React from 'react';
-import AvatarTonolucro from '../../assets/tonolucro.svg';
+import { ImageSourcePropType } from 'react-native';
+
+import { BusinessCardRight } from '../../components/BusinessCardRight';
+import { BusinessCardLeft } from '../../components/BusinessCardLeft';
+
+import AvatarTonolucro from '../../assets/tonolucro.png';
+import AvatarAGRO365 from '../../assets/AGRO365.png';
+import AvatarGo from '../../assets/go.png';
+import AvatarLevez from '../../assets/levez.png';
 
 import { 
   Container,
   Header,
+  HeaderRight,
+  ActionsButton,
   TitleHeader,
-  Title,
+  IconFilter,
+  IconDashboard,
   ListOfBusiness,
-  BusinessContainer,
-  Left,
-  City,
-  BusinessName,
-  BusinessBio,
-  BusinessAvatar
 } from './styles';
 
-interface IBusiness {
+export interface IBusiness {
   id: number;
-  bio: string;
+  description: string;
   name: string;
   city: string;
-  img: string;
+  photoAvatar: ImageSourcePropType;
 }
 
 const listOfBusiness: IBusiness[] = [
   {
     id: 1,
-    bio: 'Não importa o tamanho da sua fome, o Tonolucro está aqui para te ajudar nesse momento de vazio.',
+    description: 'Não importa o tamanho da sua fome, o Tonolucro está aqui para te ajudar nesse momento de vazio.',
     name: 'Tonolucro Delivery',
     city: 'Palmas - TO',
-    img: AvatarTonolucro,
+    photoAvatar: AvatarTonolucro,
   },
   {
     id: 2,
-    bio: 'Não importa o tamanho da sua fome, o Tonolucro está aqui para te ajudar nesse momento de vazio.',
+    description: 'Somos a AGRO365, empresa de tecnologia para o setor de agrobusiness que desenvolve sistemas web e planilhas',
+    name: 'AGRO 365',
+    city: 'Araguaína - TO',
+    photoAvatar: AvatarAGRO365,
+  },
+  {
+    id: 3,
+    description: 'Como é bom comprar, não é? Melhor ainda é não enfrentar fila, demora no atendimento e todo o translado até sua lo...',
+    name: 'Go!',
+    city: 'Araguaína - TO',
+    photoAvatar: AvatarGo,
+  },
+  {
+    id: 4,
+    description: 'LEVEZ é uma plataforma inteligente de mobilidade para você e sua família. Funciona de forma simples e prática...',
+    name: 'Levez',
+    city: 'Araguaína - TO',
+    photoAvatar: AvatarLevez,
+  },
+  {
+    id: 5,
+    description: 'Não importa o tamanho da sua fome, o Tonolucro está aqui para te ajudar nesse momento de vazio.',
     name: 'Tonolucro Delivery',
     city: 'Palmas - TO',
-    img: AvatarTonolucro,
+    photoAvatar: AvatarTonolucro,
   },
-]
+];
+
 const Dashboard: React.FC = () => {
   return(
     <Container>
       <Header>
         <TitleHeader>Norti</TitleHeader>
+        <HeaderRight>
+          <ActionsButton>
+            <IconDashboard name="dashboard" />
+          </ActionsButton>
+          <ActionsButton>
+            <IconFilter name="filter" />
+          </ActionsButton>
+        </HeaderRight>
       </Header>
-
-      <Title>Empresas entrevisatadas</Title>
 
       <ListOfBusiness 
         data={listOfBusiness}
         keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => (
-          <BusinessContainer>
-            <Left>
-              <City>{item.city}</City>
-              <BusinessName>{item.name}</BusinessName>
-              <BusinessBio>{item.bio}</BusinessBio>
-            </Left>
-            <BusinessAvatar src={item.img}/>
-          </BusinessContainer>
-
-        )}
+        renderItem={({ item, index }) => {
+          if (index %2 === 0) {
+            return <BusinessCardRight business={item} />;
+          }
+          return <BusinessCardLeft business={item} />;
+        }}
       />
     </Container>
   );
