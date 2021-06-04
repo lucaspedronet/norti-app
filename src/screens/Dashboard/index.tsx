@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
 
 import { BusinessCardRight } from '../../components/BusinessCardRight';
 import { BusinessCardLeft } from '../../components/BusinessCardLeft';
+import { FilterModal } from '../../components/FilterModal';
 
 import AvatarTonolucro from '../../assets/tonolucro.png';
 import AvatarAGRO365 from '../../assets/AGRO365.png';
@@ -67,31 +68,43 @@ const listOfBusiness: IBusiness[] = [
 ];
 
 const Dashboard: React.FC = () => {
+  const [visibleModal, setVisibleModal] = useState<boolean>(false);
   return(
-    <Container>
-      <Header>
-        <TitleHeader>Norti</TitleHeader>
-        <HeaderRight>
-          <ActionsButton>
-            <IconDashboard name="dashboard" />
-          </ActionsButton>
-          <ActionsButton>
-            <IconFilter name="filter" />
-          </ActionsButton>
-        </HeaderRight>
-      </Header>
-
-      <ListOfBusiness 
-        data={listOfBusiness}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item, index }) => {
-          if (index %2 === 0) {
-            return <BusinessCardRight business={item} />;
-          }
-          return <BusinessCardLeft business={item} />;
-        }}
+    <>
+    {visibleModal && (
+      <FilterModal 
+        visible={visibleModal} 
+        onShow={() => setVisibleModal(true)}
+        onRequestClose={() => setVisibleModal(false)}
+        close={() => setVisibleModal(false)}
       />
-    </Container>
+    )}
+      
+      <Container>
+        <Header>
+          <TitleHeader>Norti</TitleHeader>
+          <HeaderRight>
+            <ActionsButton>
+              <IconDashboard name="dashboard" />
+            </ActionsButton>
+            <ActionsButton onPress={() => setVisibleModal(true)}>
+              <IconFilter name="filter" />
+            </ActionsButton>
+          </HeaderRight>
+        </Header>
+
+        <ListOfBusiness 
+          data={listOfBusiness}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item, index }) => {
+            if (index %2 === 0) {
+              return <BusinessCardRight business={item} />;
+            }
+            return <BusinessCardLeft business={item} />;
+          }}
+        />
+      </Container>
+    </>
   );
 }
 
