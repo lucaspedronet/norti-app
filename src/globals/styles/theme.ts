@@ -12,11 +12,15 @@ export const theme = {
       
       text: '#969cb2',
       textCard: '#727285',
+      textButtonSmall: '#747285',
       title: '#363f5f',
       titleHeader: '#454F63',
+      titleButton: '#FFF',
       
       background: '#F0F0F5',
       backgroundCard: '#FFFFFF',
+      backgroundFilterItem: '#f0f0f5',
+      shadowsCard: '#efefef',
       transparent: 'transparent',
    },
    fonts: {
