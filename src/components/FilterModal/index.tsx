@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Modal, ModalProps, StyleSheet } from 'react-native';
 import { ButtonFilterItem } from '../ButtonFilterItem';
 import { ButtonSmall } from '../ButtonSmall';
@@ -26,7 +26,7 @@ interface ICategoryState {
    selected: boolean;
  }
  
-const state: ICategoryState[] = [
+const stateData: ICategoryState[] = [
    { id: 1, title: 'Amapá', selected: false },
    { id: 2, title: 'Amazonas', selected: false },
    { id: 3, title: 'Pará', selected: false },
@@ -35,7 +35,7 @@ const state: ICategoryState[] = [
    { id: 6, title: 'Tocantins', selected: true },
 ]
  
-const business: ICategoryState[] = [
+const businessData: ICategoryState[] = [
    { id: 1, title: 'Agronegócio', selected: false },
    { id: 2, title: 'Automobilismo', selected: false },
    { id: 3, title: 'Big Data', selected: false },
@@ -71,17 +71,58 @@ const business: ICategoryState[] = [
    { id: 33, title: 'Outros', selected: false },
 ]
 const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) => {
-   
+   const [state, setSate] = useState<ICategoryState[]>([]);
+   const [business, setBusiness] = useState<ICategoryState[]>([]);
+
+   useEffect(() => {
+      setBusiness(businessData);
+      setSate(stateData);
+   }, []);
+
+   const handlerSelectedBusiness = (id: number) => {
+      console.log(id)
+      setBusiness((params) => {
+         const newBusiness = params.map((business) => {
+            if (business.id === id) {
+               business.selected = !business.selected
+               return business;
+            }
+            return business;
+         });
+
+         return newBusiness;
+      });
+   };
+
+   const handlerSelectedState = useCallback((id: number) => {
+      console.log(id)
+      setSate((params) => {
+         const newState = params.map((state) => {
+            if (state.id === id) {
+               state.selected = !state.selected
+               return state;
+            }
+            return state;
+         });
+
+         return newState;
+      });
+   }, []);
+
+
+
+   console.log(business);
+   console.log(state);
 
   return (
      <Modal transparent animationType="slide">
         <MaskBackground>
-         <Container>
-            <Header>
-               <IconClose name="keyboard-arrow-down" onPress={close} />
-               <TitleModal>Filtros</TitleModal>
-               <IconClose name="close" onPress={close} />
-            </Header>
+         <Container showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
+         <Header>
+            <IconClose name="keyboard-arrow-down" onPress={close} />
+            <TitleModal>Filtros</TitleModal>
+            <IconClose name="close" onPress={close} />
+         </Header>
             {/* <SessionCategory>
                <ListCategory 
                   data={state}
@@ -95,13 +136,23 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
             <SessionCategory>
                <TitleCategory>Por estado</TitleCategory>
                <BoxCategory>
-                  {state.map((item) => <ButtonFilterItem key={item.id.toString()} item={item} />)}
+                  {state.map((item) => (
+                     <ButtonFilterItem
+                        key={item.id.toString()}
+                        item={item} onPress={() => handlerSelectedState(item.id)}
+                     />
+                  ))}
                </BoxCategory>
             </SessionCategory>
             <SessionCategory>
                <TitleCategory>Por atividade da empresa</TitleCategory>
                <ByBusinessActivity>
-                  {business.map((item) => <ButtonSmall key={item.id.toString()} item={item} />)}
+                  {business.map((item) => (
+                     <ButtonSmall
+                        key={item.id.toString()}
+                        item={item} onPress={() => handlerSelectedBusiness(item.id)}
+                     />
+                  ))}
                </ByBusinessActivity>
             </SessionCategory>
          </Container>

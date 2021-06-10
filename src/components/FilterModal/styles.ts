@@ -21,6 +21,19 @@ export const Container = styled.ScrollView`
   background-color: ${({ theme }) => theme.colors.backgroundCard};
 `;
 
+export const Header = styled.View`
+  width: 100%;
+  height: ${RFValue(64)}px;
+  
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: ${({ theme }) => theme.colors.backgroundCard};
+`;
 
 export const MaskBackground = styled.View`
   flex: 1;
@@ -29,17 +42,6 @@ export const MaskBackground = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-`;
-
-export const Header = styled.View`
-  width: 100%;
-  height: ${RFValue(64)}px;
-
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
 `;
 
 export const IconClose = styled(MaterialIcons)`

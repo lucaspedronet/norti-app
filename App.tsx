@@ -9,6 +9,7 @@ import {
   Poppins_700Bold 
 } from '@expo-google-fonts/poppins';
 
+import { HooksProvider } from './src/hooks';
 import { Dashboard } from './src/screens/Dashboard';
 import { theme } from './src/globals/styles/theme';
 
@@ -25,7 +26,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Dashboard />
+      <HooksProvider>
+        <Dashboard />
+      </HooksProvider>
     </ThemeProvider>
   )
 }

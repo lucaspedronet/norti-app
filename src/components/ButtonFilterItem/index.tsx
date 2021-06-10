@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import { ContainerItem, BackgroundButton, TitleItem } from './styles';
 
@@ -8,13 +9,15 @@ interface ICategoryState {
    selected: boolean;
  }
 
-interface IButtonFilterItemProps {
+interface IButtonFilterItemProps extends TouchableOpacityProps {
    item: ICategoryState;
+   onPress(): void;
 }
  
-const ButtonFilterItem: React.FC<IButtonFilterItemProps> = ({ item }: IButtonFilterItemProps) => {
+const ButtonFilterItem: React.FC<IButtonFilterItemProps> = ({ item, onPress }: IButtonFilterItemProps) => {
+   console.log("pk", item);
    return (
-      <ContainerItem selected={item.selected}>
+      <ContainerItem selected={item.selected} onPress={onPress}>
          <BackgroundButton selected={item.selected} accessible>
             <TitleItem selected={item.selected}>{item.title}</TitleItem>
          </BackgroundButton>

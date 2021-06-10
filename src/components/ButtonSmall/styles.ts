@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { RectButton } from 'react-native-gesture-handler';
 
 type ICategorySelected = {
    selected: boolean;
  }
  
-export const ContainerItem = styled(RectButton)<ICategorySelected>`
+export const ContainerItem = styled.TouchableOpacity<ICategorySelected>`
   align-items: center;
   justify-content: center;
 

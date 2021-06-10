@@ -18,7 +18,7 @@ export const BackgroundButton = styled.View<ICategorySelected>`
   border-color: ${({ selected, theme }) => selected ? theme.colors.primary : theme.colors.backgroundFilterItem};
 `;
 
-export const ContainerItem = styled(RectButton)<ICategorySelected>`
+export const ContainerItem = styled.TouchableOpacity<ICategorySelected>`
   align-items: center;
   justify-content: center;
 
