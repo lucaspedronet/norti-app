@@ -98,3 +98,12 @@ export const Label = styled.Text`
   line-height: 23px;
 `;
 
+export const Footer = styled.View`
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 150px;
+  
+  padding: ${RFValue(24)}px ${RFValue(20)}px;
+`;

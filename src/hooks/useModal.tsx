@@ -8,11 +8,18 @@ import React, {
 } from 'react';
 
 interface IModalContextData {
-   isOpen: boolean;
    Close(): void;
    showModal(): void;
-   modalContent: ModalContentData;
+   toggleFilter(filter: ISelectedFilter): void;
+   isOpen: boolean;
+   isFilter: ISelectedFilter;
+   useCleanFilter(array: ICategoryState[]): ICategoryState[];
 }
+interface ICategoryState {
+   id: number;
+   title: string;
+   selected: boolean;
+ }
 
 type ModalContentData = {
    title?: string;
@@ -20,23 +27,35 @@ type ModalContentData = {
    footer?: string;
 }
 
+type ISelectedFilter = "business" | "language" | "professional" | "softwareDevelopment" | "";
+
 const ModalContext = createContext<IModalContextData>({} as IModalContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
   const [close, setClose] = useState<boolean>(true);
-  const [modalContent, setModalContent] = useState<ModalContentData>({} as ModalContentData);
+  const [selectedFilter, setSelectedFilter] = useState<ISelectedFilter>('');
 
   const isOpen = useMemo(() => !close, [close]);
+  
+  const isFilter = useMemo(() => selectedFilter, [selectedFilter]);
 
-  const Close = useCallback(() => setClose(true), []);
+  const Close = useCallback(() => {
+     setClose(true);
+     setSelectedFilter('');
+   }, []);
+  
+  const toggleFilter = useCallback((filter: ISelectedFilter) => setSelectedFilter(() => filter), []);
 
-  const showModal = useCallback(() => {
-   // setModalContent()
-   setClose(false);
+  const showModal = useCallback(() => setClose(() => false), []);
+
+  const useCleanFilter = useCallback((array: ICategoryState[]) => {
+     const newArray = array.map((item) => Object.assign(item, { ...item, selected: false }));
+
+     return newArray;
   }, []);
 
   return (
-     <ModalContext.Provider value={{ isOpen, Close, modalContent, showModal }}>
+     <ModalContext.Provider value={{ isOpen, Close, showModal, isFilter, toggleFilter, useCleanFilter }}>
         {children}
      </ModalContext.Provider>
   )

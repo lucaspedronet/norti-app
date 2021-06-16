@@ -13,6 +13,7 @@ export const theme = {
       text: '#969cb2',
       textCard: '#727285',
       textButtonSmall: '#747285',
+      textButtonPrimary: '#FFFFFF',
       title: '#363f5f',
       titleHeader: '#454F63',
       titleButton: '#FFF',

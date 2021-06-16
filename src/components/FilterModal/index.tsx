@@ -4,6 +4,8 @@ import { ButtonFilterItem } from '../ButtonFilterItem';
 import { ButtonSmall } from '../ButtonSmall';
 import { ButtonViewFilter } from '../ButtonViewFilter';
 import { ButtonRowSelected } from '../ButtonRowSelected';
+import { useModal } from '../../hooks/useModal';
+
 import { 
    Container,
    MaskBackground,
@@ -34,7 +36,7 @@ const stateData: ICategoryState[] = [
    { id: 4, title: 'Rondônia', selected: false },
    { id: 5, title: 'Roraima', selected: false },
    { id: 6, title: 'Tocantins', selected: true },
-]
+];
  
 const businessData: ICategoryState[] = [
    { id: 1, title: 'Agronegócio', selected: false },
@@ -70,7 +72,8 @@ const businessData: ICategoryState[] = [
    { id: 31, title: 'Turismo', selected: true },
    { id: 32, title: 'Vendas e Marketing', selected: true },
    { id: 33, title: 'Outros', selected: false },
-]
+];
+
 const productDigitalData: ICategoryState[] = [
    {
       id: 1,
@@ -98,6 +101,8 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
    const [state, setSate] = useState<ICategoryState[]>([]);
    const [business, setBusiness] = useState<ICategoryState[]>([]);
    const [productDigital, setProductDigital] = useState<ICategoryState[]>([]);
+
+   const { useCleanFilter } = useModal();
 
    useEffect(() => {
       setBusiness(businessData);
@@ -147,6 +152,12 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
       });
    }, []);
 
+   function handlerClean(): void {
+      setBusiness(() => useCleanFilter(business));
+      setProductDigital(() => useCleanFilter(productDigital));
+      setSate(() => useCleanFilter(state));
+   }
+
   return (
      <Modal transparent animationType="slide">
         <MaskBackground>
@@ -154,7 +165,7 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
          <Header>
             <IconClose name="keyboard-arrow-left" onPress={close} />
             <TitleModal>Filtros</TitleModal>
-            <IconClose name="close" onPress={close} />
+            <IconClose name="close" onPress={handlerClean} />
          </Header>
             {/* <SessionCategory>
                <ListCategory 
