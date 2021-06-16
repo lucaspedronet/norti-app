@@ -11,10 +11,10 @@
             "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
       },
       "softwareDevelopment": {
-         "processDevelopment": ["Extreme Programming (XP), Scrum"],
+         "processDevelopment": ["Extreme Programming (XP)", "Scrum"],
          "timeDevelopment": "Entre 1 e 3 anos",
          "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
-         "methodologyBenefits": ["Aumento de produtividade nas entregas, Ganho de autonomia da equipe e indivíduos, Capacidade da equipe responder rápido a mudanças no projetos"],
+         "methodologyBenefits": ["Aumento de produtividade nas entregas", "Ganho de autonomia da equipe e indivíduos", "Capacidade da equipe responder rápido a mudanças no projetos"],
          "methodologyDisadvantages": ["Nenhuma"]
       },
       "language": {

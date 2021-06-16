@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Modal, ModalProps, StyleSheet } from 'react-native';
+import { Modal, ModalProps } from 'react-native';
 import { ButtonFilterItem } from '../ButtonFilterItem';
 import { ButtonSmall } from '../ButtonSmall';
 import { ButtonViewFilter } from '../ButtonViewFilter';
+import { ButtonRowSelected } from '../ButtonRowSelected';
 import { 
    Container,
    MaskBackground,
@@ -70,17 +71,41 @@ const businessData: ICategoryState[] = [
    { id: 32, title: 'Vendas e Marketing', selected: true },
    { id: 33, title: 'Outros', selected: false },
 ]
+const productDigitalData: ICategoryState[] = [
+   {
+      id: 1,
+      selected: false,
+      title: 'Aplicativo para smartphones',
+   },
+   {
+      id: 2,
+      selected: false,
+      title: 'Sistema/aplicativo Web',
+   },
+   {
+      id: 3,
+      selected: false,
+      title: 'PDV com internet',
+   },
+   {
+      id: 4,
+      selected: false,
+      title: 'PDV sem internet',
+   },
+];
+
 const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) => {
    const [state, setSate] = useState<ICategoryState[]>([]);
    const [business, setBusiness] = useState<ICategoryState[]>([]);
+   const [productDigital, setProductDigital] = useState<ICategoryState[]>([]);
 
    useEffect(() => {
       setBusiness(businessData);
       setSate(stateData);
+      setProductDigital(productDigitalData);
    }, []);
 
-   const handlerSelectedBusiness = (id: number) => {
-      console.log(id)
+   const handlerSelectedBusiness = useCallback((id: number) => {
       setBusiness((params) => {
          const newBusiness = params.map((business) => {
             if (business.id === id) {
@@ -92,10 +117,9 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
 
          return newBusiness;
       });
-   };
+   }, []);
 
    const handlerSelectedState = useCallback((id: number) => {
-      console.log(id)
       setSate((params) => {
          const newState = params.map((state) => {
             if (state.id === id) {
@@ -109,17 +133,26 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
       });
    }, []);
 
+   const handlerSelectedProduct = useCallback((id: number) => {
+      setProductDigital((params) => {
+         const newProduct = params.map((state) => {
+            if (state.id === id) {
+               state.selected = !state.selected
+               return state;
+            }
+            return state;
+         });
 
-
-   console.log(business);
-   console.log(state);
+         return newProduct;
+      });
+   }, []);
 
   return (
      <Modal transparent animationType="slide">
         <MaskBackground>
          <Container showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
          <Header>
-            <IconClose name="keyboard-arrow-down" onPress={close} />
+            <IconClose name="keyboard-arrow-left" onPress={close} />
             <TitleModal>Filtros</TitleModal>
             <IconClose name="close" onPress={close} />
          </Header>
@@ -155,9 +188,21 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
                   ))}
                </ByBusinessActivity>
             </SessionCategory>
+            <SessionCategory>
+               <TitleCategory>Por produto e serviço digital</TitleCategory>
+               {productDigital.map((p) => (
+                  <ButtonRowSelected
+                     key={p.id}
+                    onPress={() => handlerSelectedProduct(p.id)}
+                    selected={p.selected}
+                  >
+                    {p.title}
+                  </ButtonRowSelected>
+               ))}
+            </SessionCategory>
          </Container>
          <Footer>
-            <ButtonViewFilter>Ver resultados</ButtonViewFilter>
+            <ButtonViewFilter>Selecionar filtros</ButtonViewFilter>
          </Footer>
         </MaskBackground>
      </Modal>
@@ -165,14 +210,5 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
 }
 
 export { FilterModal };
-const styles = StyleSheet.create({
-   container: {
-     flex: 1,
-     justifyContent: "space-between",
-     backgroundColor: "transparent",
-     padding: 0,
-     marginBottom: 12,
-   },
- });
  
  

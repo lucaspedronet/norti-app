@@ -6,19 +6,19 @@
         "state": "Tocantins",
         "city": "Palmas",
         "selected": false,
-        "byBusinessActivity": ["Delivery, Internet, Marketplace, Vendas e Marketing"],
+        "byBusinessActivity": ["Delivery", "Internet", "Marketplace", "Vendas e Marketing"],
         "businessRevenueModel": "Software como Serviço (SaaS)",
         "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
     },
     "softwareDevelopment": {
-       "processDevelopment": ["Extreme Programming (XP), Scrum"],
+       "processDevelopment": ["Extreme Programming (XP)", "Scrum"],
        "timeDevelopment": "Entre 1 e 3 anos",
        "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
-       "methodologyBenefits": ["Aumento de produtividade nas entregas, Ganho de autonomia da equipe e indivíduos, Capacidade da equipe responder rápido a mudanças no projetos"],
+       "methodologyBenefits": ["Aumento de produtividade nas entregas", "Ganho de autonomia da equipe e indivíduos", "Capacidade da equipe responder rápido a mudanças no projetos"],
        "methodologyDisadvantages": ["Nenhuma"]
     },
     "language": {
-       "languageSoftware": ["JavaScript, PHP"],
+       "languageSoftware": ["JavaScript", "PHP"],
        "frameworksFrontend": ["Bootstrap"],
        "frameworksBackend": ["Próprio"],
        "testMethodology": ["Testes manuais"],
@@ -42,9 +42,9 @@
         "state": "Tocantins",
         "city": "Palmas",
         "selected": false,
-        "byBusinessActivity": ["Agronegócio, Delivery, Desenvolvimento de Software, Esportes, Internet, Mobile, Saúde e beleza, Segurança"],
+        "byBusinessActivity": ["Agronegócio", "Delivery", "Desenvolvimento de Software", "Esportes", "Internet", "Mobile", "Saúde e beleza", "Segurança"],
         "businessRevenueModel": "API",
-        "businessTargetAudience": ["B2B (Business to Business), B2B2C (Business to Business to Consumer), B2C (Business to Consumer), B2S (Business to social)"]
+        "businessTargetAudience": ["B2B (Business to Business)", "B2B2C (Business to Business to Consumer)", "B2C (Business to Consumer)", "B2S (Business to social)"]
      },
      "softwareDevelopment": {
         "processDevelopment": [""],
@@ -54,8 +54,8 @@
         "methodologyDisadvantages": [""]
      },
     "language": {
-       "languageSoftware": ["JavaScript, PHP, TypeScript, Dart"],
-      "frameworksFrontend": ["Angular, Flutter"],
+       "languageSoftware": ["JavaScript", "PHP", "TypeScript", "Dart"],
+      "frameworksFrontend": ["Angular", "Flutter"],
       "frameworksBackend": ["Laravel"],
       "testMethodology": ["Nenhuma"],
       "testUnitaryFrontBack": ["Nenhuma"],
@@ -78,7 +78,7 @@
         "state": "Tocantins",
         "city": "Palmas",
         "selected": false,
-        "byBusinessActivity": ["Serviços Profissionais, TIC e Telecom"],
+        "byBusinessActivity": ["Serviços Profissionais", "TIC e Telecom"],
         "businessRevenueModel": "Software como Serviço (SaaS)",
         "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
      },
@@ -86,7 +86,7 @@
         "processDevelopment": ["Lean Software Development (LSD)"],
         "timeDevelopment": "Até 6 meses",
         "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
-        "methodologyBenefits": ["Transparência nas atividades realizadas pelo time, Entendimento sobre o projeto, Uso de artefatos para entendimento do problema, Uso de diagramas para compreender a solução (o projeto), Melhoria na comunicação da equipe, Ganho de autonomia da equipe e indivíduos"],
+        "methodologyBenefits": ["Transparência nas atividades realizadas pelo time", "Entendimento sobre o projeto", "Uso de artefatos para entendimento do problema", "Uso de diagramas para compreender a solução (o projeto)", "Melhoria na comunicação da equipe", "Ganho de autonomia da equipe e indivíduos"],
         "methodologyDisadvantages": ["Problemas com prazos"]
      },
     "language": {
@@ -114,7 +114,7 @@
         "state": "Tocantins",
         "city": "Palmas",
         "selected": false,
-        "byBusinessActivity": ["Delivery, Marketplace"],
+        "byBusinessActivity": ["Delivery", "Marketplace"],
         "businessRevenueModel": "Marketplace",
         "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
      },
@@ -122,16 +122,16 @@
         "processDevelopment": ["Agile software development; Kanban"],
         "timeDevelopment": "Até 6 meses",
         "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
-        "methodologyBenefits": ["Transparência nas atividades realizadas pelo time, Entendimento sobre o projeto, Aumento de produtividade nas entregas, Ganho de autonomia da equipe e indivíduos, Capacidade da equipe responder rápido a mudanças no projetos, Redução de falhas"],
+        "methodologyBenefits": ["Transparência nas atividades realizadas pelo time", "Entendimento sobre o projeto", "Aumento de produtividade nas entregas", "Ganho de autonomia da equipe e indivíduos", "Capacidade da equipe responder rápido a mudanças no projetos", "Redução de falhas"],
         "methodologyDisadvantages": ["recurso humano"]
      },
     "language": {
-       "languageSoftware": ["JavaScript, PHP, TypeScript"],
-      "frameworksFrontend": ["Angular, JQuery, React (é considerado um framework dentro de um ecossistema de React)"],
-      "frameworksBackend": [".NET Core, ASP .NET, Laravel"],
+       "languageSoftware": ["JavaScript", "PHP", "TypeScript"],
+      "frameworksFrontend": ["Angular", "JQuery", "React (é considerado um framework dentro de um ecossistema de React)"],
+      "frameworksBackend": [".NET Core", "ASP .NET", "Laravel"],
       "testMethodology": ["nenhum"],
-      "testUnitaryFrontBack": ["Sentry; MSTest"],
-      "typeArchitectureProject": ["Arquitetura MVC (Model-View-Controller), Arquitetura de Microservices, Arquitetura Monolítica"]
+      "testUnitaryFrontBack": ["Sentry", "MSTest"],
+      "typeArchitectureProject": ["Arquitetura MVC (Model-View-Controller)", "Arquitetura de Microservices", "Arquitetura Monolítica"]
 
     },
     "professional": {
@@ -145,24 +145,24 @@
   },
   {
     "business": {
-       "id": 5,
-           "nameBusiness": "Upanda",
-        "state": "Tocantins",
-        "city": "Araguaina",
-        "selected": false,
-        "byBusinessActivity": ["Delivery"],
-        "businessRevenueModel": "Software como Serviço (SaaS)",
-        "businessTargetAudience": ["B2B (Business to Business)"]
+         "id": 5,
+         "nameBusiness": "Upanda",
+         "state": "Tocantins",
+         "city": "Araguaina",
+         "selected": false,
+         "byBusinessActivity": ["Delivery"],
+         "businessRevenueModel": "Software como Serviço (SaaS)",
+         "businessTargetAudience": ["B2B (Business to Business)"]
      },
      "softwareDevelopment": {
         "processDevelopment": ["Scrum"],
         "timeDevelopment": "Entre 6 meses e 1 ano",
         "implementProjectAdapter": "Implementada por completo nos projetos",
-        "methodologyBenefits": ["Transparência nas atividades realizadas pelo time, Entendimento sobre o projeto, Aumento de produtividade nas entregas, Aumento de qualidade nas entregas, Melhoria na comunicação da equipe, Ganho de autonomia da equipe e indivíduos, Redução de falhas"],
+        "methodologyBenefits": ["Transparência nas atividades realizadas pelo time", "Entendimento sobre o projeto", "Aumento de produtividade nas entregas", "Aumento de qualidade nas entregas", "Melhoria na comunicação da equipe", "Ganho de autonomia da equipe e indivíduos", "Redução de falhas"],
         "methodologyDisadvantages": ["Nenhuma"]
      },
     "language": {
-       "languageSoftware": ["JavaScript, Python, TypeScript"],
+       "languageSoftware": ["JavaScript","Python", "TypeScript"],
       "frameworksFrontend": ["React (é considerado um framework dentro de um ecossistema de React)"],
       "frameworksBackend": ["Django"],
       "testMethodology": ["TDD (Test-driven Development)"],

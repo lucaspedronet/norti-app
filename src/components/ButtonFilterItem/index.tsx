@@ -15,7 +15,6 @@ interface IButtonFilterItemProps extends TouchableOpacityProps {
 }
  
 const ButtonFilterItem: React.FC<IButtonFilterItemProps> = ({ item, onPress }: IButtonFilterItemProps) => {
-   console.log("pk", item);
    return (
       <ContainerItem selected={item.selected} onPress={onPress}>
          <BackgroundButton selected={item.selected} accessible>

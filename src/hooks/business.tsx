@@ -58,9 +58,6 @@ interface IBusinessQuiz {
  const BusinessStore: React.FC = ({ children }) => {
    const [listBusinessQuiz, setListBusinessQuiz] = useState<IBusinessQuiz[]>(() => []);
 
-   // useEffect(() => {setListBusinessQuiz(businessData)}, [])
-   console.log(businessData);
-
    const setBusinessQuiz = (data: IBusinessQuiz) => {
       console.log(data);
    }

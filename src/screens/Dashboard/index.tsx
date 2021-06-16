@@ -3,7 +3,7 @@ import { ImageSourcePropType } from 'react-native';
 import { BusinessContext } from '../../hooks/business';
 import { BusinessCardRight } from '../../components/BusinessCardRight';
 import { BusinessCardLeft } from '../../components/BusinessCardLeft';
-import { FilterModal } from '../../components/FilterModal';
+import { ModalCategories } from '../../components/ModalCategories';
 
 import AvatarTonolucro from '../../assets/tonolucro.png';
 import AvatarAGRO365 from '../../assets/AGRO365.png';
@@ -71,14 +71,13 @@ const Dashboard: React.FC = () => {
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
   const { businessQuiz } = useContext(BusinessContext);
 
-  console.log(businessQuiz);
   return(
     <>
     {visibleModal && (
-      <FilterModal 
-        visible={visibleModal} 
-        onShow={() => setVisibleModal(true)}
+      <ModalCategories
+        visible={visibleModal}
         onRequestClose={() => setVisibleModal(false)}
+        onShow={() => setVisibleModal(true)}
         close={() => setVisibleModal(false)}
       />
     )}
