@@ -14,8 +14,10 @@ export const theme = {
       textCard: '#727285',
       textButtonSmall: '#747285',
       textButtonPrimary: '#FFFFFF',
+      backgroundSelectedFilter: '#363F5F',
       title: '#363f5f',
       titleHeader: '#454F63',
+      titleModal: '#2A2E43',
       titleButton: '#FFF',
       
       background: '#F0F0F5',

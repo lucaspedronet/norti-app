@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
-import { BusinessContext } from '../../hooks/business';
+import { useBusiness } from '../../hooks/business';
+
 import { BusinessCardRight } from '../../components/BusinessCardRight';
 import { BusinessCardLeft } from '../../components/BusinessCardLeft';
 import { ModalCategories } from '../../components/ModalCategories';
@@ -69,7 +70,7 @@ const listOfBusiness: IBusiness[] = [
 
 const Dashboard: React.FC = () => {
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
-  const { businessQuiz } = useContext(BusinessContext);
+  const { businessQuiz } = useBusiness();
 
   return(
     <>
@@ -96,7 +97,7 @@ const Dashboard: React.FC = () => {
         </Header>
 
         <ListOfBusiness 
-          data={listOfBusiness}
+          data={businessQuiz}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item, index }) => {
             if (index %2 === 0) {

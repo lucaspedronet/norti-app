@@ -1,12 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react';
-import businessData from '../services/data.json';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { ImageSourcePropType } from 'react-native';
+
+import businessData from '../services/data.js'
 
 interface ICategoryBusiness {
-   id: number;
-   nameBusiness: string;
+   name: string;
    state: string;
    city: string;
-   selected: boolean;
    byBusinessActivity: string[];
    businessRevenueModel: string;
    businessTargetAudience: string[];
@@ -14,7 +14,7 @@ interface ICategoryBusiness {
 
 interface ICategorySoftwareDevelopment {
    processDevelopment: string[];
-   timeDevelopment: string[];
+   timeDevelopment: string;
    implementProjectAdapter: string;
    methodologyBenefits: string[];
    methodologyDisadvantages: string[];
@@ -38,35 +38,56 @@ interface ICategoryProfessional {
    workModalityHiring: string;
 }
 
-interface IBusinessQuiz {
+export interface IBusinessQuiz {
    id: number;
-   title: string;
    selected: boolean;
-   businessQuiz: ICategoryBusiness;
-   softwareDevelopmentQuiz: ICategorySoftwareDevelopment;
-   languageQuiz: ICategoryLanguage;
-   professionalQuiz: ICategoryProfessional;
+   photoAvatar: ImageSourcePropType;
+   description: string;
+   businessCategory: ICategoryBusiness;
+   softwareDevelopmentCategory: ICategorySoftwareDevelopment;
+   languageCategory: ICategoryLanguage;
+   professionalCategory: ICategoryProfessional;
  }
 
  interface IBusinessContext {
-   businessQuiz: IBusinessQuiz[];
    setBusinessQuiz(data: IBusinessQuiz): void;
+   setSomeFilterApplication(array: string[]): void;
+   businessQuiz: IBusinessQuiz[];
+   someFilter: string[];
  }
 
  const BusinessContext = createContext<IBusinessContext>({} as IBusinessContext);
  
  const BusinessStore: React.FC = ({ children }) => {
    const [listBusinessQuiz, setListBusinessQuiz] = useState<IBusinessQuiz[]>(() => []);
+   const [someFilterApplication, setSomeFilterApplication] = useState<string[]>([]);
 
-   const setBusinessQuiz = (data: IBusinessQuiz) => {
-      console.log(data);
-   }
+   const setBusinessQuiz = (data: IBusinessQuiz) => {}
+
+   useEffect(() => {
+      setListBusinessQuiz(() => businessData);
+   }, []);
 
    return (
-   <BusinessContext.Provider value={{ businessQuiz: listBusinessQuiz, setBusinessQuiz }}>
+   <BusinessContext.Provider value={{ 
+      businessQuiz: listBusinessQuiz, 
+      someFilter: someFilterApplication,
+      setSomeFilterApplication,
+      setBusinessQuiz, 
+   }}>
       {children}
    </BusinessContext.Provider>
    );
  }
+
+ function useBusiness(): IBusinessContext {
+    const context = useContext(BusinessContext);
+
+    if (!context) {
+      throw new Error("UseBusiness must be used within an BusinessProvider");
+    }
+
+    return context;    
+ }
  
- export { BusinessStore, BusinessContext };
+ export { BusinessStore, useBusiness };

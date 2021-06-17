@@ -1,23 +1,64 @@
+
 [
   {
-    "business": {
-       "id": 1,
-        "nameBusiness": "detudo.app",
-        "state": "Tocantins",
-        "city": "Palmas",
-        "selected": false,
-        "byBusinessActivity": ["Delivery", "Internet", "Marketplace", "Vendas e Marketing"],
-        "businessRevenueModel": "Software como Serviço (SaaS)",
-        "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
+   "id": 10,
+   "selected": false,
+   "description": "",
+   "photoAvatar": "../../assets/assinadoc-02.png",
+   "businessCategory": {
+      "name": "AssinaDoc",
+      "state": "Amapá",
+      "city": "Macapá",
+      "byBusinessActivity": ["Serviços Profissionais", "SAAS"],
+      "businessRevenueModel": "Software como Serviço (SaaS)",
+      "businessTargetAudience": ["B2B (Business to Business)"]
     },
-    "softwareDevelopment": {
+    "softwareDevelopmentCategory": {
+       "processDevelopment": ["Scrum"],
+       "timeDevelopment": "Acima de 3 anos",
+       "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
+       "methodologyBenefits": ["Transparência nas atividades realizadas pelo time"," Entendimento sobre o projeto"," Uso de artefatos para entendimento do problema"," Documentação de fácil compreensão"," Aumento de produtividade nas entregas","Melhoria na comunicação da equipe", "Ganho de autonomia da equipe e indivíduos, Redução de falhas"],
+       "methodologyDisadvantages": ["Nenhuma"]
+    },
+    "languageCategory": {
+       "languageSoftware": ["JavaScript", "PHP", "Python"],
+       "frameworksFrontend": ["Não"],
+       "frameworksBackend": ["Não"],
+       "testMethodology": ["TDD (Test-driven Development)"],
+       "testUnitaryFrontBack": ["Nenhum"],
+       "typeArchitectureProject": ["Arquitetura MVC (Model-View-Controller)"]
+
+    },
+    "professionalCategory": {
+       "timeBusiness": "Menos de 1 ano",
+       "LevelProfessionalTechnology": "Muito difícil (7)",
+       "technologyWorkMode": "Remoto",
+       "menSize": "até 5 profissionais",
+       "girlSize": "até 5 profissionais",
+       "workModalityHiring": "Ambas"
+    }
+  },
+  {
+   "id": 1,
+   "selected": false,
+   "description": "",
+   "photoAvatar": "../../assets/assinadoc-02.png",
+   "businessCategory": {
+      "name": "detudo.app",
+      "state": "Tocantins",
+      "city": "Palmas",
+      "byBusinessActivity": ["Delivery", "Internet", "Marketplace", "Vendas e Marketing"],
+      "businessRevenueModel": "Software como Serviço (SaaS)",
+      "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
+    },
+    "softwareDevelopmentCategory": {
        "processDevelopment": ["Extreme Programming (XP)", "Scrum"],
        "timeDevelopment": "Entre 1 e 3 anos",
        "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
        "methodologyBenefits": ["Aumento de produtividade nas entregas", "Ganho de autonomia da equipe e indivíduos", "Capacidade da equipe responder rápido a mudanças no projetos"],
        "methodologyDisadvantages": ["Nenhuma"]
     },
-    "language": {
+    "languageCategory": {
        "languageSoftware": ["JavaScript", "PHP"],
        "frameworksFrontend": ["Bootstrap"],
        "frameworksBackend": ["Próprio"],
@@ -26,7 +67,7 @@
        "typeArchitectureProject": ["Arquitetura MVC (Model-View-Controller)"]
 
     },
-    "professional": {
+    "professionalCategory": {
        "timeBusiness": "Entre 1 e 3 anos",
        "LevelProfessionalTechnology": "Muito baixa (2)",
        "technologyWorkMode": "Remoto",
@@ -36,24 +77,26 @@
     }
   },
   {
-    "business": {
-       "id": 2,
-           "nameBusiness": "Dix BPO",
-        "state": "Tocantins",
-        "city": "Palmas",
-        "selected": false,
-        "byBusinessActivity": ["Agronegócio", "Delivery", "Desenvolvimento de Software", "Esportes", "Internet", "Mobile", "Saúde e beleza", "Segurança"],
-        "businessRevenueModel": "API",
-        "businessTargetAudience": ["B2B (Business to Business)", "B2B2C (Business to Business to Consumer)", "B2C (Business to Consumer)", "B2S (Business to social)"]
+   "id": 2,
+   "selected": false,
+   "description": "",
+   "photoAvatar": "../../assets/assinadoc-02.png",
+   "businessCategory": {
+       "name": "Dix BPO",
+       "state": "Tocantins",
+       "city": "Palmas",
+       "byBusinessActivity": ["Agronegócio", "Delivery", "Desenvolvimento de Software", "Esportes", "Internet", "Mobile", "Saúde e beleza", "Segurança"],
+       "businessRevenueModel": "API",
+       "businessTargetAudience": ["B2B (Business to Business)", "B2B2C (Business to Business to Consumer)", "B2C (Business to Consumer)", "B2S (Business to social)"]
      },
-     "softwareDevelopment": {
+     "softwareDevelopmentCategory": {
         "processDevelopment": [""],
         "timeDevelopment": "",
         "implementProjectAdapter": "",
         "methodologyBenefits": [""],
         "methodologyDisadvantages": [""]
      },
-    "language": {
+    "languageCategory": {
        "languageSoftware": ["JavaScript", "PHP", "TypeScript", "Dart"],
       "frameworksFrontend": ["Angular", "Flutter"],
       "frameworksBackend": ["Laravel"],
@@ -62,7 +105,7 @@
       "typeArchitectureProject": ["Arquitetura MVC (Model-View-Controller)"]
 
     },
-    "professional": {
+    "professionalCategory": {
        "timeBusiness": "Entre 1 e 3 anos",
        "LevelProfessionalTechnology": "Difícil (5)",
        "technologyWorkMode": "Remoto",
@@ -72,25 +115,27 @@
     }
   },
   {
-    "business": {
-       "id": 3,
-           "nameBusiness": "Raví",
-        "state": "Tocantins",
-        "city": "Palmas",
-        "selected": false,
-        "byBusinessActivity": ["Serviços Profissionais", "TIC e Telecom"],
-        "businessRevenueModel": "Software como Serviço (SaaS)",
-        "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
+    "id": 3,
+    "selected": false,
+    "description": "",
+    "photoAvatar": "../../assets/assinadoc-02.png",
+    "businessCategory": {
+       "name": "Raví",
+       "state": "Tocantins",
+       "city": "Palmas",
+       "byBusinessActivity": ["Serviços Profissionais", "TIC e Telecom"],
+       "businessRevenueModel": "Software como Serviço (SaaS)",
+       "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
      },
-     "softwareDevelopment": {
+     "softwareDevelopmentCategory": {
         "processDevelopment": ["Lean Software Development (LSD)"],
         "timeDevelopment": "Até 6 meses",
         "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
         "methodologyBenefits": ["Transparência nas atividades realizadas pelo time", "Entendimento sobre o projeto", "Uso de artefatos para entendimento do problema", "Uso de diagramas para compreender a solução (o projeto)", "Melhoria na comunicação da equipe", "Ganho de autonomia da equipe e indivíduos"],
         "methodologyDisadvantages": ["Problemas com prazos"]
      },
-    "language": {
-       "languageSoftware": ["JavaScript, PHP"],
+    "languageCategory": {
+       "languageSoftware": ["JavaScript", "PHP"],
       "frameworksFrontend": ["React (é considerado um framework dentro de um ecossistema de React)"],
       "frameworksBackend": ["Nenhum"],
       "testMethodology": ["Nenhum"],
@@ -98,7 +143,7 @@
       "typeArchitectureProject": ["Arquitetura de Microservices"]
 
     },
-    "professional": {
+    "professionalCategory": {
        "timeBusiness": "Menos de 1 ano",
        "LevelProfessionalTechnology": "Nenhuma (0)",
        "technologyWorkMode": "Remoto",
@@ -108,24 +153,26 @@
     }
   },
   {
-    "business": {
-       "id": 4,
-           "nameBusiness": "Tonolucro",
-        "state": "Tocantins",
-        "city": "Palmas",
-        "selected": false,
-        "byBusinessActivity": ["Delivery", "Marketplace"],
-        "businessRevenueModel": "Marketplace",
-        "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
+   "id": 4,
+   "selected": false,
+   "description": "Não importa o tamanho da sua fome, o Tonolucro está aqui para te ajudar nesse momento de vazio.",
+   "photoAvatar": "../assets/tonolucro.png",
+   "businessCategory": {
+       "name": "Tonolucro",
+       "state": "Tocantins",
+       "city": "Palmas",
+       "byBusinessActivity": ["Delivery", "Marketplace"],
+       "businessRevenueModel": "Marketplace",
+       "businessTargetAudience": ["B2B2C (Business to Business to Consumer)"]
      },
-     "softwareDevelopment": {
-        "processDevelopment": ["Agile software development; Kanban"],
+     "softwareDevelopmentCategory": {
+        "processDevelopment": ["Agile software development", "Kanban"],
         "timeDevelopment": "Até 6 meses",
         "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",
         "methodologyBenefits": ["Transparência nas atividades realizadas pelo time", "Entendimento sobre o projeto", "Aumento de produtividade nas entregas", "Ganho de autonomia da equipe e indivíduos", "Capacidade da equipe responder rápido a mudanças no projetos", "Redução de falhas"],
         "methodologyDisadvantages": ["recurso humano"]
      },
-    "language": {
+    "languageCategory": {
        "languageSoftware": ["JavaScript", "PHP", "TypeScript"],
       "frameworksFrontend": ["Angular", "JQuery", "React (é considerado um framework dentro de um ecossistema de React)"],
       "frameworksBackend": [".NET Core", "ASP .NET", "Laravel"],
@@ -134,7 +181,7 @@
       "typeArchitectureProject": ["Arquitetura MVC (Model-View-Controller)", "Arquitetura de Microservices", "Arquitetura Monolítica"]
 
     },
-    "professional": {
+    "professionalCategory": {
        "timeBusiness": "Entre 1 e 3 anos",
        "LevelProfessionalTechnology": "Difícil (5)",
        "technologyWorkMode": "Remoto",
@@ -144,33 +191,34 @@
     }
   },
   {
-    "business": {
-         "id": 5,
-         "nameBusiness": "Upanda",
-         "state": "Tocantins",
-         "city": "Araguaina",
-         "selected": false,
-         "byBusinessActivity": ["Delivery"],
-         "businessRevenueModel": "Software como Serviço (SaaS)",
-         "businessTargetAudience": ["B2B (Business to Business)"]
+    "id": 5,
+    "selected": false,
+    "description": "",
+    "photoAvatar": "../../assets/assinadoc-02.png",
+    "businessCategory": {
+       "name": "Upanda",
+       "state": "Tocantins",
+       "city": "Araguaina",
+       "byBusinessActivity": ["Delivery"],
+       "businessRevenueModel": "Software como Serviço (SaaS)",
+       "businessTargetAudience": ["B2B (Business to Business)"]
      },
-     "softwareDevelopment": {
+     "softwareDevelopmentCategory": {
         "processDevelopment": ["Scrum"],
         "timeDevelopment": "Entre 6 meses e 1 ano",
         "implementProjectAdapter": "Implementada por completo nos projetos",
         "methodologyBenefits": ["Transparência nas atividades realizadas pelo time", "Entendimento sobre o projeto", "Aumento de produtividade nas entregas", "Aumento de qualidade nas entregas", "Melhoria na comunicação da equipe", "Ganho de autonomia da equipe e indivíduos", "Redução de falhas"],
         "methodologyDisadvantages": ["Nenhuma"]
      },
-    "language": {
-       "languageSoftware": ["JavaScript","Python", "TypeScript"],
+    "languageCategory": {
+      "languageSoftware": ["JavaScript","Python", "TypeScript"],
       "frameworksFrontend": ["React (é considerado um framework dentro de um ecossistema de React)"],
       "frameworksBackend": ["Django"],
       "testMethodology": ["TDD (Test-driven Development)"],
       "testUnitaryFrontBack": ["Cypress"],
       "typeArchitectureProject": ["Arquitetura Monolítica"]
-
     },
-    "professional": {
+    "professionalCategory": {
        "timeBusiness": "Entre 1 e 3 anos",
        "LevelProfessionalTechnology": "Extremamente difícil (10)",
        "technologyWorkMode": "Remoto",

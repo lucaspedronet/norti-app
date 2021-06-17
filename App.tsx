@@ -10,8 +10,9 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import { HooksProvider } from './src/hooks';
-import { Dashboard } from './src/screens/Dashboard';
 import { theme } from './src/globals/styles/theme';
+
+import { RouteApp } from './src/routes/app.routes';
 
 export default function App() {
   const [fontLoading] = useFonts({
@@ -27,7 +28,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <HooksProvider>
-        <Dashboard />
+        <RouteApp />
       </HooksProvider>
     </ThemeProvider>
   )

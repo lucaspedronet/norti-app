@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 interface IIcon {
-  iconBk: boolean;
+  activeFilter: boolean;
 }
 
 export const Container = styled.View`
@@ -41,7 +41,8 @@ export const Icon = styled(MaterialIcons)<IIcon>`
   border-radius: 15px;
 
   font-size: ${RFValue(25)}px;
-  background-color: ${({ theme, iconBk }) => iconBk ? theme.colors.primaryLight : "transparent" };
+  background-color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.primaryLight : theme.colors.backgroundSelectedFilter };
+  color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.colors.backgroundCard };
 `;
 
 export const IconCode = styled(FontAwesome)`

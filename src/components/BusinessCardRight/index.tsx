@@ -1,6 +1,5 @@
 import React from 'react';
-import { ImageSourcePropType } from 'react-native';
-
+import { IBusinessQuiz } from '../../hooks/business';
 import { 
    BackgroundItem,
    BusinessContainer,
@@ -11,16 +10,8 @@ import {
    BusinessAvatar,
 } from './styles';
 
-type IBusiness = {
-   id: number;
-   description: string;
-   name: string;
-   city: string;
-   photoAvatar: ImageSourcePropType;
- }
-
 interface IBusinessCarProps {
-   business: IBusiness;
+   business: IBusinessQuiz;
 }
 
 const BusinessCardRight: React.FC<IBusinessCarProps> = ({ business }: IBusinessCarProps) => {
@@ -28,8 +19,8 @@ const BusinessCardRight: React.FC<IBusinessCarProps> = ({ business }: IBusinessC
       <BackgroundItem>
          <BusinessContainer>
             <BusinessHeader>
-               <City>{business.city}</City>
-               <BusinessName>{business.name}</BusinessName>
+               <City>{business.businessCategory.city}</City>
+               <BusinessName>{business.businessCategory.name}</BusinessName>
             </BusinessHeader>
             <BusinessDescription>{business.description}</BusinessDescription>
          </BusinessContainer>

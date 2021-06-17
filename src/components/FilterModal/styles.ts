@@ -9,6 +9,10 @@ interface ICategoryState {
   selected: boolean;
 }
 
+interface ICleanTextProps {
+  disable: boolean;
+}
+
 export const Container = styled.ScrollView`
   flex: 1;
   width: 100%;
@@ -28,6 +32,8 @@ export const Header = styled.View`
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 
+  padding: 0 ${RFValue(18)}px;
+  margin-bottom: ${RFValue(12)}px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -45,22 +51,31 @@ export const MaskBackground = styled.View`
 `;
 
 export const IconClose = styled(MaterialIcons)`
-  padding: 10px;
-
   font-size: ${RFValue(25)}px;
+  color: ${({ theme }) => theme.colors.titleModal};
 `;
 
 export const TitleModal = styled.Text.attrs({ numberOfLines: 1 })`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(20)}px;
 
+  color: ${({ theme }) => theme.colors.titleModal};
+
   line-height: 25px;
+`;
+
+export const CleanText = styled.Text.attrs({ numberOfLines: 1 })<ICleanTextProps>`
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${RFValue(16)}px;
+
+  line-height: 22px;
+  color: ${({ theme, disable }) => disable ? theme.colors.primaryLight : theme.colors.primary};
 `;
 
 export const SessionCategory = styled.View`
   width: 100%;
   height: auto;
-  margin-bottom: 12px;
+  padding-bottom: ${RFValue(32)}px;
 
   background-color: ${({ theme }) => theme.colors.backgroundCard};
 `;
@@ -91,7 +106,8 @@ export const ByBusinessActivity = styled.View`
 
 export const TitleCategory = styled.Text.attrs({ numberOfLines: 1 })`
   font-family: ${({ theme }) => theme.fonts.medium};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(20)}px;
+  color: ${({ theme }) => theme.colors.titleModal};
 
   line-height: 25px;
   margin-bottom: 16px;

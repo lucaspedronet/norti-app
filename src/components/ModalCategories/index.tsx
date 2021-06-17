@@ -2,7 +2,11 @@ import React, { Fragment } from 'react';
 import { ModalProps, Modal, View } from 'react-native';
 import { IconCloseModal } from '../IconCloseModal';
 import { icons } from '../../utils/constants/iconsFiltersCategories';
+
 import { useModal } from '../../hooks/useModal';
+import { useFilter } from '../../hooks/useFilter';
+import { useBusiness } from '../../hooks/business';
+
 import { FilterModal } from '../../components/FilterModal';
 import { ButtonBase } from '../../components/ButtonBase';
 
@@ -27,6 +31,8 @@ type ISelectedFilter = "business" | "language" | "professional" | "softwareDevel
 
 const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCategoriesProps) => {
   const { Close, isOpen, showModal, isFilter, toggleFilter } = useModal();
+  const { someFilter } = useBusiness();
+  console.log(someFilter)
 
   function handlerFilterModal(filter: ISelectedFilter) {
     toggleFilter(filter)
@@ -52,10 +58,10 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
                     <CategoryFilter onPress={() => handlerFilterModal(category.filter)}>
                       <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                         {index === 0 && <IconCode name={category.iconLeft} />}
-                        {index > 0 && <Icon name={category.iconLeft} iconBk={true} />}
+                        {index > 0 && <Icon name={category.iconLeft} activeFilter={someFilter.includes(category.label)} />}
                         <Label>{category.label}</Label>
                       </View>
-                      <Icon name={category.iconRight} iconBk={false} />
+                      <Icon name={category.iconRight} activeFilter={false} />
                     </CategoryFilter>
                     <CategoryRow />
                   </Fragment>
@@ -64,9 +70,14 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
               }
             </Body>
             <Footer>
-              <ButtonBase isButton="primary">Aplicar Filtro</ButtonBase>
-              <ButtonBase isButton="secondary">Limpar Filtro</ButtonBase>
-            </Footer>
+            {someFilter.filter(Boolean).length > 0 ? (
+              <>
+                <ButtonBase isButton="primary">Aplicar Filtro</ButtonBase>
+                <ButtonBase isButton="secondary">Limpar Filtro</ButtonBase>
+              </>
+              ) : null}
+              </Footer>
+            
           </Container>
         </MaskBackground>
       </Modal>

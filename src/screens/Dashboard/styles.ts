@@ -4,7 +4,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
-import { IBusiness } from './index';
+import { IBusinessQuiz } from '../../hooks/business';
 
 export const Container = styled.View`
   flex: 1;
@@ -75,7 +75,7 @@ export const BackgroundItem = styled.TouchableOpacity.attrs({
 `;
 
 export const ListOfBusiness = styled(
-  FlatList as new () => FlatList<IBusiness>,
+  FlatList as new () => FlatList<IBusinessQuiz>,
 ).attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: { paddingVertical: 20, paddingHorizontal: 24 },
