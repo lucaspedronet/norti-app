@@ -107,6 +107,23 @@ export const BusinessHeader = styled.View`
   padding: 0;
 `;
 
+export const AmountFilterText = styled.Text`
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${RFValue(10)}px;
+  color: ${({ theme }) => theme.colors.backgroundCard};
+  text-align: center;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.danger};
+`;
+
 export const City = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(12)}px;

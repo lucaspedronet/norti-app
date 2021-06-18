@@ -45,12 +45,13 @@ export const Icon = styled(MaterialIcons)<IIcon>`
   color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.colors.backgroundCard };
 `;
 
-export const IconCode = styled(FontAwesome)`
+export const IconCode = styled(FontAwesome)<IIcon>`
   padding: 10px;
   border-radius: 15px;
 
   font-size: ${RFValue(25)}px;
-  background-color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.primaryLight : theme.colors.backgroundSelectedFilter };
+  color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.colors.backgroundCard };
 `;
 
 export const TitleText = styled.Text`

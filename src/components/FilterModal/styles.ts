@@ -69,7 +69,7 @@ export const CleanText = styled.Text.attrs({ numberOfLines: 1 })<ICleanTextProps
   font-size: ${RFValue(16)}px;
 
   line-height: 22px;
-  color: ${({ theme, disable }) => disable ? theme.colors.primaryLight : theme.colors.primary};
+  color: ${({ theme, disable }) => disable ? theme.colors.primary : theme.colors.primaryLight};
 `;
 
 export const SessionCategory = styled.View`

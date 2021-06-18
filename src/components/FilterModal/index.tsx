@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { Modal, ModalProps, TouchableOpacity } from 'react-native';
 
 import { ButtonFilterItem } from '../ButtonFilterItem';
@@ -7,6 +7,7 @@ import { ButtonViewFilter } from '../ButtonViewFilter';
 import { ButtonRowSelected } from '../ButtonRowSelected';
 import { useModal } from '../../hooks/useModal';
 import { useFilter } from '../../hooks/useFilter';
+import { useBusiness } from '../../hooks/business';
 
 import { 
    Container,
@@ -27,7 +28,7 @@ interface IFilterModalProps extends ModalProps {
 }
 
 const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) => {
-   const { cleanFilter, isFilterApplication } = useModal();
+   const { someFilter } = useBusiness();
    const { 
       filterState,
       filterBusiness,
@@ -39,16 +40,26 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
       allCleanFilters,
    } = useFilter();
 
+   function handlerApplicationFilter(): void {
+      handlerSelectedFilters();
+      close();      
+   }
+
+   function handlerGoBack(): void {
+      allCleanFilters();
+      close();
+   }
+
 
   return (
      <Modal transparent animationType="slide">
         <MaskBackground>
          <Container showsVerticalScrollIndicator={false} stickyHeaderIndices={[0]}>
          <Header>
-            <IconClose name="keyboard-arrow-left" onPress={close} />
+            <IconClose name="keyboard-arrow-left" onPress={handlerGoBack} />
             <TitleModal>Filtros</TitleModal>
-            <TouchableOpacity onPress={allCleanFilters} disabled={!!Boolean(isFilterApplication.includes("activityBusiness"))}>
-               <CleanText disable={Boolean(isFilterApplication.includes("activityBusiness"))}>Limpar</CleanText>
+            <TouchableOpacity onPress={allCleanFilters} disabled={!someFilter.includes("Empresas")}>
+               <CleanText disable={someFilter.includes("Empresas")}>Limpar</CleanText>
             </TouchableOpacity>
          </Header>
             {/* <SessionCategory>
@@ -97,7 +108,8 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
             </SessionCategory>
          </Container>
          <Footer>
-            <ButtonViewFilter onPress={() => handlerSelectedFilters()}>Selecionar filtros</ButtonViewFilter>
+            {someFilter.includes('Empresas') && <ButtonViewFilter onPress={handlerApplicationFilter}>Selecionar filtros</ButtonViewFilter>}
+            
          </Footer>
         </MaskBackground>
      </Modal>

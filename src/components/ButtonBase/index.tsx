@@ -8,9 +8,9 @@ interface IButtonBaseProps extends TouchableOpacityProps {
    isButton: "primary" | "secondary";
 }
 
-const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isButton = "primary" }: IButtonBaseProps) => {
+const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isButton = "primary", ...rest }: IButtonBaseProps) => {
   return (
-   <Container isButton={isButton}>
+   <Container {...rest} isButton={isButton}>
       <TitleButton isTitle={isButton}>{children}</TitleButton>
    </Container>
   );
