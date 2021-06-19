@@ -27,6 +27,7 @@ import {
 interface IModalCategoriesProps extends ModalProps {
   close(): void
 }
+
 type ISelectedFilter = "business" | "language" | "professional" | "softwareDevelopment" | "";
 
 const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCategoriesProps) => {

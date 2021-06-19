@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+
 import { ImageSourcePropType } from 'react-native';
 import { useBusiness } from '../../hooks/business';
 
@@ -27,8 +29,13 @@ export interface IBusiness {
 }
 
 const Dashboard: React.FC = () => {
+  const { navigate } = useNavigation();
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
   const { businessQuiz, someFilter } = useBusiness();
+
+  function handlerNavigation(): void {
+    navigate("Home", { data: 'Teste..'});
+  }
 
   return(
     <>
@@ -45,7 +52,7 @@ const Dashboard: React.FC = () => {
         <Header>
           <TitleHeader>Norti</TitleHeader>
           <HeaderRight>
-            <ActionsButton>
+            <ActionsButton onPress={handlerNavigation}>
               <IconDashboard name="dashboard" />
             </ActionsButton>
             <ActionsButton onPress={() => setVisibleModal(true)}>

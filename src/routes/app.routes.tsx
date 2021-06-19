@@ -13,7 +13,7 @@ function RouteApp() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Dashboard">
         <Stack.Screen options={{ headerShown: false }} name="Dashboard" component={Dashboard} />
-        <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
+        <Stack.Screen options={{ title: "Dashboard" }} name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );
