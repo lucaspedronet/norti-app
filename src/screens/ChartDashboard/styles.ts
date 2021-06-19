@@ -3,7 +3,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 export const Container = styled.ScrollView`
   flex: 1;
-  padding: 0 16px;
+  padding: 0 1px;
 
   padding-bottom: ${getBottomSpace()};
   background-color: ${({ theme }) => theme.colors.background};
@@ -41,7 +41,7 @@ export const CardChart =  styled.View`
   width: 100%;
   height: auto;
 
-  padding: 16px;
+  padding: 12px 0;
   margin-bottom: 16px;
   border-radius: 12px;
   elevation: 5;
