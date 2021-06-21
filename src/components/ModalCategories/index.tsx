@@ -5,10 +5,12 @@ import { icons } from '../../utils/constants/iconsFiltersCategories';
 
 import { useModal } from '../../hooks/useModal';
 import { useFilter } from '../../hooks/useFilter';
-import { useBusiness } from '../../hooks/business';
+import { useBusiness, IBusinessQuiz } from '../../hooks/business';
 
 import { FilterModal } from '../../components/FilterModal';
 import { ButtonBase } from '../../components/ButtonBase';
+
+import businessData from '../../services/data.js'
 
 import { 
   MaskBackground,
@@ -24,6 +26,14 @@ import {
   Body,
 } from './styles';
 
+interface ICategoryBusiness {
+  name: string;
+  state: string;
+  city: string;
+  byBusinessActivity: string[];
+  businessRevenueModel: string;
+  businessTargetAudience: string[];
+}
 interface IModalCategoriesProps extends ModalProps {
   close(): void
 }
@@ -32,8 +42,8 @@ type ISelectedFilter = "business" | "language" | "professional" | "softwareDevel
 
 const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCategoriesProps) => {
   const { Close, isOpen, showModal, isFilter, toggleFilter } = useModal();
-  const { someFilter } = useBusiness();
-  const { allCleanFilters } = useFilter();
+  const { someFilter, setBusinessQuiz } = useBusiness();
+  const { allCleanFilters, filterSelectedBusiness } = useFilter();
 
   function handlerFilterModal(filter: ISelectedFilter) {
     toggleFilter(filter)
@@ -41,6 +51,8 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
   }
 
   function handlerCleanFilter(): void {
+    const newBusiness: IBusinessQuiz[] = businessData;
+    setBusinessQuiz(newBusiness);
     allCleanFilters();
     showModal();
   }
@@ -50,6 +62,35 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
     showModal();
     close();
  }
+
+ function handlerApplicationFilter(): void {
+   console.log('test...');
+   showModal();
+   close();
+   onFilterInBusinessList();
+ }
+
+ const checkCategoryActivityBusiness = (activityBusiness: string): boolean => 
+    filterSelectedBusiness.activityBusiness.includes(activityBusiness);
+ 
+ function onFilterInBusinessList() {
+  let categoryActivity;
+  let businessTargetAudience;
+  let newBusiness: IBusinessQuiz[] = [];
+  const businessQuiz: IBusinessQuiz[] = businessData;
+  
+  newBusiness = businessQuiz.map((b) => {
+    categoryActivity = b.businessCategory.byBusinessActivity.filter(checkCategoryActivityBusiness);
+    if (categoryActivity.length > 0) {
+      console.log(categoryActivity);
+      console.log(b.businessCategory.name);
+      return b;
+    }
+  }).filter(Boolean);
+
+  console.log(newBusiness);
+  setBusinessQuiz(newBusiness)
+}
 
   return (
     <>
@@ -85,12 +126,11 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
             <Footer>
             {someFilter.filter(Boolean).length > 0 ? (
               <>
-                <ButtonBase isButton="primary">Aplicar Filtro</ButtonBase>
+                <ButtonBase isButton="primary" onPress={handlerApplicationFilter}>Aplicar Filtro</ButtonBase>
                 <ButtonBase isButton="secondary" onPress={handlerCleanFilter}>Limpar Filtro</ButtonBase>
               </>
               ) : null}
-              </Footer>
-            
+            </Footer>
           </Container>
         </MaskBackground>
       </Modal>

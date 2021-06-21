@@ -52,9 +52,25 @@ const Dashboard: React.FC = ({ route }) => {
       { y: 71.4, x: "Tocantins" },
       { y: 21.4, x: "Pará" },
       { y: 7.1, x: "Amapá" },
-    ]
+    ],
+    targetBusiness: [
+      { y: 57.1, x: "B2B" },
+      { y: 50, x: "B2B2C" },
+      { y: 14.3, x: "B2C" },
+      { y: 7.1, x: "B2S" },
+      { y: 21.4, x: "B2G" },
+      { y: 7.1, x: "B2E" },
+    ],
+    agilePractice: [
+      { y: 27.3, x: "XP"},
+      { y: 72.7, x: "Scrum",},
+      { y: 9.1, x: "ASD"}, 
+      { y: 9.1, x: "Kanban"}, 
+      { y: 18.2, x: "LSD"},
+      { y: 50, x: "B2B2C" },
+    ],
   }
-  
+
   const dataPizza = [
     {
       name: "Amapá",
@@ -105,6 +121,7 @@ const Dashboard: React.FC = ({ route }) => {
 
     
     <CardChart>
+      <TitleChart>Cidades</TitleChart>
       <VictoryPie
         animate
         data={data.state}
@@ -120,9 +137,9 @@ const Dashboard: React.FC = ({ route }) => {
           }
       }}
       />
-
         <VictoryLegend 
           x={80}
+          centerTitle
           height={100}
           orientation="horizontal"
           theme={VictoryTheme.material}
@@ -139,7 +156,7 @@ const Dashboard: React.FC = ({ route }) => {
             { 
               name: "Pará",
               symbol: {
-                fill: "yellow",
+                fill: "gold",
               },
             }, 
             { 
@@ -153,6 +170,7 @@ const Dashboard: React.FC = ({ route }) => {
     </CardChart>
 
     <CardChart>
+      <TitleChart>Cidades</TitleChart>
       <VictoryChart
         domainPadding={{ x: [30, 20], y: [0, 0]  }}
         theme={VictoryTheme.material}
@@ -195,11 +213,112 @@ const Dashboard: React.FC = ({ route }) => {
             }
           }}
         />
+      </VictoryChart>
+    </CardChart>
+
+    <CardChart>
+      <TitleChart>Qual público alvo da empresa?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [20, 0], y: [0, 0]  }}
+        theme={VictoryTheme.material}
+        animate
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.targetBusiness}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={25}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
+        
+      </VictoryChart>
+    
+    
+    </CardChart>
+    <HeaderCategory>
+      <TitleCategory>Desenvolvimento de software e metodologias</TitleCategory>
+    </HeaderCategory>
+
+    <CardChart>
+      <TitleChart>Qual prática ágil é base para o processo de desenvolvimento?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [20, 0], y: [0, 0]  }}
+        theme={VictoryTheme.material}
+        animate
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.agilePractice}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={20}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
         
       </VictoryChart>
     </CardChart>
 
     <CardChart>
+      <TitleChart>Linguagens</TitleChart>
       <VictoryChart
         horizontal
         domainPadding={{ x: [10, 0], y: [0, 0]  }}

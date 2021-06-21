@@ -46,34 +46,46 @@ const stateData: ICategoryQuiz[] = [
    { id: 6, title: 'Tocantins', selected: false, object: 'state' },
 ];
  
-const productDigitalData: ICategoryQuiz[] = [
+const businessTargetAudienceData: ICategoryQuiz[] = [
    {
       id: 1,
       selected: false,
-      title: 'Aplicativo para smartphones',
-      object: 'servicesProductsDigital',
+      title: 'B2B (Business to Business)',
+      object: 'businessTargetAudience',
    },
    {
       id: 2,
       selected: false,
-      title: 'Sistema/aplicativo Web',
-      object: 'servicesProductsDigital',
+      title: 'B2B2C (Business to Business to Cosumer',
+      object: 'businessTargetAudience',
    },
    {
       id: 3,
       selected: false,
-      title: 'PDV com internet',
-      object: 'servicesProductsDigital',
+      title: 'B2C (Business to Consumer)',
+      object: 'businessTargetAudience',
    },
    {
       id: 4,
       selected: false,
-      title: 'PDV sem internet',
-      object: 'servicesProductsDigital',
+      title: 'P2P (peer-to-peer)',
+      object: 'businessTargetAudience',
+   },
+   {
+      id: 5,
+      selected: false,
+      title: 'B2S (Business to social)',
+      object: 'businessTargetAudience',
+   },
+   {
+      id: 6,
+      selected: false,
+      title: 'B2E',
+      object: 'businessTargetAudience',
    },
 ];
 
-type IBusinessFilter = "state" | "activityBusiness" | "servicesProductsDigital";
+type IBusinessFilter = "state" | "activityBusiness" | "businessTargetAudience";
 
 interface ICategoryQuiz {
    id: number;
@@ -83,7 +95,7 @@ interface ICategoryQuiz {
  }
 
  type IFilterBusinessSelected = {
-   [key in IBusinessFilter]: ICategoryQuiz[];
+   [key in IBusinessFilter]: string[];
 };
 
 interface IFilterContext {
@@ -104,19 +116,23 @@ const FilterProvider: React.FC = ({ children }) => {
    const { someFilter } = useBusiness();
    const [state, setState] = useState<ICategoryQuiz[]>([]);
    const [business, setBusiness] = useState<ICategoryQuiz[]>([]);
-   const [productServices, setProductServices] = useState<ICategoryQuiz[]>([]);
+   const [businessTargetAudience, setProductServices] = useState<ICategoryQuiz[]>([]);
    const [filterSelected, setFilterSelected] = useState<IFilterBusinessSelected>({
-      servicesProductsDigital: [],
+      businessTargetAudience: [],
       activityBusiness: [],
       state: [],
    });
 
+   console.log(filterSelected);
    useEffect(() => {
-      setProductServices(() => productDigitalData);
+      setProductServices(() => businessTargetAudienceData);
       setBusiness(() => businessData);
       setState(() => stateData);
    }, []);
-
+   
+   /**
+    * verifica se alguma categoria "Empresa" tem filtros aplicado;
+   */
    useMemo(() => {
       if (state.some((s) => s.selected)) {
          return someFilter[3] = 'Empresas';
@@ -124,27 +140,53 @@ const FilterProvider: React.FC = ({ children }) => {
       if (business.some((s) => s.selected)) {
          return someFilter[3] = 'Empresas';
       }
-      if (productServices.some((s) => s.selected)) {
+      if (businessTargetAudience.some((s) => s.selected)) {
          return someFilter[3] = 'Empresas';
       }
       
       return someFilter[3] = '';
-   }, [state, productServices, business]);
+   }, [state, businessTargetAudience, business]);
    /**
-    * filtra todas as opções de filtros selecionada das categorias state, business e productServices
+    * filtra todas as opções de filtros selecionada das categorias state, business e businessTargetAudience
     */
    const handlerSelectedFilters = useCallback(() => {
-      const filterState = state.filter((s) => s.selected !== false);
-      const filterBusiness = business.filter((b) => b.selected);
-      const filterProduct = productServices.filter((p) => p.selected);
+      const filterState: string[] = [];
+      const filterBusiness: string[] = [];
+      const filterTargetAudience: string[] = [];
+
+      const formattedString = (filter: string): string => filter.toLocaleLowerCase('pt-br').trim();
+
+      const checkFilterSelected = (filter: ICategoryQuiz) => {
+         if (filter.selected) {
+            switch(filter.object) {
+               case 'activityBusiness': {
+                  filterBusiness.push(filter.title);
+                  break;
+               }
+               case 'businessTargetAudience': {
+                  filterTargetAudience.push(filter.title);
+                  break;
+               }
+               case 'state': {
+                  filterState.push(filter.title);
+                  break;
+               }
+            }
+         }
+      }
+
+      state.map(checkFilterSelected);
+      business.map(checkFilterSelected);
+      businessTargetAudience.map(checkFilterSelected);
+
       setFilterSelected((params) => {
          params.state = filterState;
          params.activityBusiness = filterBusiness;
-         params.servicesProductsDigital = filterProduct;
+         params.businessTargetAudience = filterTargetAudience;
 
          return params;
       })
-   }, [state,business, productServices]);
+   }, [state,business, businessTargetAudience]);
    
    const handlerSelectedState = useCallback((id: number) => {
       setState((params) => {
@@ -196,7 +238,7 @@ const FilterProvider: React.FC = ({ children }) => {
    setFilterSelected((params) => {
       params.state = [];
       params.activityBusiness = [];
-      params.servicesProductsDigital = [];
+      params.businessTargetAudience = [];
 
       return params;
    })
@@ -206,7 +248,7 @@ const FilterProvider: React.FC = ({ children }) => {
       <FilterContext.Provider value={{ 
          filterState: state,
          filterBusiness: business,
-         filterProductServices: productServices,
+         filterProductServices: businessTargetAudience,
          filterSelectedBusiness: filterSelected,
          handlerSelectedFilters,
          handlerSelectedBusiness,
