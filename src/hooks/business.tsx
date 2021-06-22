@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { ImageSourcePropType } from 'react-native';
-
 import businessData from '../services/data.js'
 
 interface ICategoryBusiness {
@@ -50,7 +49,7 @@ export interface IBusinessQuiz {
  }
 
  interface IBusinessContext {
-   setBusinessQuiz(data: IBusinessQuiz): void;
+   setBusinessQuiz(data: IBusinessQuiz[]): void;
    setSomeFilterApplication(array: string[]): void;
    businessQuiz: IBusinessQuiz[];
    someFilter: string[];
@@ -61,8 +60,12 @@ export interface IBusinessQuiz {
  const BusinessStore: React.FC = ({ children }) => {
    const [listBusinessQuiz, setListBusinessQuiz] = useState<IBusinessQuiz[]>(() => []);
    const [someFilterApplication, setSomeFilterApplication] = useState<string[]>([]);
+   const [newListBusiness, setNewListBusiness] = useState<IBusinessQuiz[]>([]);
 
-   const setBusinessQuiz = (data: IBusinessQuiz) => {}
+   const setBusinessQuiz = (data: IBusinessQuiz[]) => {
+      console.log(data);
+      setListBusinessQuiz(() => data);
+   }
 
    useEffect(() => {
       setListBusinessQuiz(() => businessData);

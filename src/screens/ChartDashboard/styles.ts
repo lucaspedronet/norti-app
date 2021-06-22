@@ -3,7 +3,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper'
 
 export const Container = styled.ScrollView`
   flex: 1;
-  padding: 0 16px;
+  padding: 0 1px;
 
   padding-bottom: ${getBottomSpace()};
   background-color: ${({ theme }) => theme.colors.background};
@@ -12,10 +12,9 @@ export const Container = styled.ScrollView`
 export const HeaderCategory = styled.View`
   width: 100%;
   padding: 12px 6px;
-  border-radius: 12px;
   margin: 12px 0;
 
-  background-color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const TitleCategory = styled.Text.attrs({ numberOfLines: 2 })`
@@ -23,7 +22,8 @@ export const TitleCategory = styled.Text.attrs({ numberOfLines: 2 })`
   font-size: 20px;
 
   line-height: 26px;
-  color: ${({ theme }) => theme.colors.title};
+  
+  color: ${({ theme }) => theme.colors.primaryLight};
 `;
 
 export const TitleChart = styled.Text.attrs({ numberOfLines: 1 })`
@@ -31,6 +31,7 @@ export const TitleChart = styled.Text.attrs({ numberOfLines: 1 })`
   font-size: 14px;
 
   line-height: 16px;
+  padding: 8px 12px;
   color: ${({ theme }) => theme.colors.textCard};
 `;
 
@@ -41,7 +42,7 @@ export const CardChart =  styled.View`
   width: 100%;
   height: auto;
 
-  padding: 16px;
+  padding: 12px 0;
   margin-bottom: 16px;
   border-radius: 12px;
   elevation: 5;

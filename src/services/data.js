@@ -1,7 +1,6 @@
 const avatarAssinaDoc = require("../assets/assinadoc-02.png");
 const avatarDefault = require("../assets/default.png");
 const avatarTonolucro = require("../assets/tonolucro.png");
-console.log(avatarAssinaDoc)
 module.exports = [
    {
     "id": 10,
