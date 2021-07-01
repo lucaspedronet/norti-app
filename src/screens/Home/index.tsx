@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { ImageSourcePropType } from 'react-native';
-import { useBusiness } from '../../hooks/business';
+import { useBusiness } from '../../hooks/useBusiness';
 
 import { BusinessCardRight } from '../../components/BusinessCardRight';
 import { BusinessCardLeft } from '../../components/BusinessCardLeft';

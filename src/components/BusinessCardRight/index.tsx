@@ -1,5 +1,5 @@
 import React from 'react';
-import { IBusinessQuiz } from '../../hooks/business';
+import { IBusinessQuiz } from '../../hooks/useBusiness';
 import { 
    BackgroundItem,
    BusinessContainer,

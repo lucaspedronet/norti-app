@@ -7,7 +7,7 @@ import { ButtonViewFilter } from '../ButtonViewFilter';
 import { ButtonRowSelected } from '../ButtonRowSelected';
 import { useModal } from '../../hooks/useModal';
 import { useFilter } from '../../hooks/useFilter';
-import { useBusiness } from '../../hooks/business';
+import { useBusiness } from '../../hooks/useBusiness';
 
 import { 
    Container,

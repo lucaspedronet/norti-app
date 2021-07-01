@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { useBusiness } from '../hooks/business';
+import { useBusiness } from './useBusiness';
 
 const businessData: ICategoryQuiz[] = [
    { id: 1, title: 'Agronegócio', selected: false, object: 'activityBusiness' },
@@ -56,7 +56,7 @@ const businessTargetAudienceData: ICategoryQuiz[] = [
    {
       id: 2,
       selected: false,
-      title: 'B2B2C (Business to Business to Cosumer',
+      title: 'B2B2C (Business to Business to Consumer)',
       object: 'businessTargetAudience',
    },
    {

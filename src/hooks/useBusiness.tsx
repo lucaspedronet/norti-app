@@ -57,7 +57,7 @@ export interface IBusinessQuiz {
 
  const BusinessContext = createContext<IBusinessContext>({} as IBusinessContext);
  
- const BusinessStore: React.FC = ({ children }) => {
+ const BusinessProvider: React.FC = ({ children }) => {
    const [listBusinessQuiz, setListBusinessQuiz] = useState<IBusinessQuiz[]>(() => []);
    const [someFilterApplication, setSomeFilterApplication] = useState<string[]>([]);
    const [newListBusiness, setNewListBusiness] = useState<IBusinessQuiz[]>([]);
@@ -93,4 +93,4 @@ export interface IBusinessQuiz {
     return context;    
  }
  
- export { BusinessStore, useBusiness };
+ export { BusinessProvider, useBusiness };
