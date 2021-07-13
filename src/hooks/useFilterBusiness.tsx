@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { useBusiness } from '../hooks/business';
+import { useBusiness } from './useBusiness';
 
 const businessData: ICategoryQuiz[] = [
    { id: 1, title: 'Agronegócio', selected: false, object: 'activityBusiness' },
@@ -56,7 +56,7 @@ const businessTargetAudienceData: ICategoryQuiz[] = [
    {
       id: 2,
       selected: false,
-      title: 'B2B2C (Business to Business to Cosumer',
+      title: 'B2B2C (Business to Business to Consumer)',
       object: 'businessTargetAudience',
    },
    {
@@ -101,7 +101,7 @@ interface ICategoryQuiz {
 interface IFilterContext {
    filterState: ICategoryQuiz[];
    filterBusiness: ICategoryQuiz[];
-   filterProductServices: ICategoryQuiz[];
+   filterBusinessTargetAudience: ICategoryQuiz[];
    filterSelectedBusiness: IFilterBusinessSelected,
    handlerSelectedState(id: number): void;
    handlerSelectedProduct(id: number): void;
@@ -248,7 +248,7 @@ const FilterProvider: React.FC = ({ children }) => {
       <FilterContext.Provider value={{ 
          filterState: state,
          filterBusiness: business,
-         filterProductServices: businessTargetAudience,
+         filterBusinessTargetAudience: businessTargetAudience,
          filterSelectedBusiness: filterSelected,
          handlerSelectedFilters,
          handlerSelectedBusiness,
@@ -261,7 +261,7 @@ const FilterProvider: React.FC = ({ children }) => {
    )
 };
 
-function useFilter(): IFilterContext {
+function useFilterBusiness(): IFilterContext {
    const context = useContext(FilterContext);
 
    if (!context) {
@@ -271,4 +271,4 @@ function useFilter(): IFilterContext {
    return context;    
 }
 
-export { FilterProvider, useFilter };
+export { FilterProvider, useFilterBusiness };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { IBusinessQuiz } from '../../hooks/business';
+import { TouchableOpacityProps } from 'react-native';
+import { IBusinessQuiz } from '../../hooks/useBusiness';
 
 import { 
    BackgroundItem,
@@ -11,13 +12,14 @@ import {
    BusinessAvatar,
 } from './styles';
 
-interface IBusinessCarProps {
+interface IBusinessCarProps extends TouchableOpacityProps {
    business: IBusinessQuiz;
+   onPress(): void;
 }
 
-const BusinessCardLeft: React.FC<IBusinessCarProps> = ({ business }: IBusinessCarProps) => {
+const BusinessCardLeft: React.FC<IBusinessCarProps> = ({ business, onPress }: IBusinessCarProps) => {
    return (
-      <BackgroundItem>
+      <BackgroundItem onPress={onPress}>
          <BusinessContainer>
             <BusinessHeader>
                <City>{business.businessCategory.city}</City>

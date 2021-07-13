@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { BusinessStore } from './business';
+import { BusinessProvider } from './useBusiness';
 import { ModalProvider } from './useModal';
-import { FilterProvider } from './useFilter';
+import { FilterProvider } from './useFilterBusiness';
 
 const HooksProvider: React.FC = ({ children }) => {
   return (
-    <BusinessStore>
+    <BusinessProvider>
       <ModalProvider>
         <FilterProvider>
           {children}
         </FilterProvider>
       </ModalProvider>
-    </BusinessStore>
+    </BusinessProvider>
   );
 }
 

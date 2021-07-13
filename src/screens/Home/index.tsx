@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { ImageSourcePropType } from 'react-native';
-import { useBusiness } from '../../hooks/business';
+import { useBusiness } from '../../hooks/useBusiness';
 
 import { BusinessCardRight } from '../../components/BusinessCardRight';
 import { BusinessCardLeft } from '../../components/BusinessCardLeft';
@@ -33,8 +33,12 @@ const Home: React.FC = () => {
   const [visibleModal, setVisibleModal] = useState<boolean>(false);
   const { businessQuiz, someFilter } = useBusiness();
 
-  function handlerNavigation(): void {
+  function navigationDashboard(): void {
     navigate("Dashboard", { data: 'Teste..'});
+  }
+
+  function navigationProfileStore(): void {
+    navigate("ProfileStore");
   }
 
   return(
@@ -52,7 +56,7 @@ const Home: React.FC = () => {
         <Header>
           <TitleHeader>Norti</TitleHeader>
           <HeaderRight>
-            <ActionsButton onPress={handlerNavigation}>
+            <ActionsButton onPress={navigationDashboard}>
               <IconDashboard name="dashboard" />
             </ActionsButton>
             <ActionsButton onPress={() => setVisibleModal(true)}>
@@ -69,9 +73,9 @@ const Home: React.FC = () => {
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item, index }) => {
             if (index %2 === 0) {
-              return <BusinessCardRight business={item} />;
+              return <BusinessCardRight business={item} onPress={navigationProfileStore} />;
             }
-            return <BusinessCardLeft business={item} />;
+            return <BusinessCardLeft business={item} onPress={navigationProfileStore} />;
           }}
         />
       </Container>

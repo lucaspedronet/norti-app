@@ -4,7 +4,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize'
-import { IBusinessQuiz } from '../../hooks/business';
+import { IBusinessQuiz } from '../../hooks/useBusiness';
 
 export const Container = styled.View`
   flex: 1;

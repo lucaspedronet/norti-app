@@ -4,8 +4,8 @@ import { IconCloseModal } from '../IconCloseModal';
 import { icons } from '../../utils/constants/iconsFiltersCategories';
 
 import { useModal } from '../../hooks/useModal';
-import { useFilter } from '../../hooks/useFilter';
-import { useBusiness, IBusinessQuiz } from '../../hooks/business';
+import { useFilterBusiness } from '../../hooks/useFilterBusiness';
+import { useBusiness, IBusinessQuiz } from '../../hooks/useBusiness';
 
 import { FilterModal } from '../../components/FilterModal';
 import { ButtonBase } from '../../components/ButtonBase';
@@ -43,10 +43,10 @@ type ISelectedFilter = "business" | "language" | "professional" | "softwareDevel
 const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCategoriesProps) => {
   const { Close, isOpen, showModal, isFilter, toggleFilter } = useModal();
   const { someFilter, setBusinessQuiz } = useBusiness();
-  const { allCleanFilters, filterSelectedBusiness } = useFilter();
+  const { allCleanFilters, filterSelectedBusiness } = useFilterBusiness();
 
   function handlerFilterModal(filter: ISelectedFilter) {
-    toggleFilter(filter)
+    toggleFilter(filter);
     showModal();
   }
 
@@ -70,31 +70,53 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
    onFilterInBusinessList();
  }
 
- const checkCategoryActivityBusiness = (activityBusiness: string): boolean => 
-    filterSelectedBusiness.activityBusiness.includes(activityBusiness);
+ const checkCategoryActivityBusiness = (activityBusiness: string): boolean => {
+   return filterSelectedBusiness.activityBusiness.includes(activityBusiness);
+ }
+  
+ const checkCategoryBusinessTargetAudience = (target: string) => {
+   return filterSelectedBusiness.businessTargetAudience.includes(target);
+ }
+    
  
  function onFilterInBusinessList() {
-  let categoryActivity;
-  let businessTargetAudience;
+  let businessTargetAudience: string[];
+  let categoryActivity: string[];
+  let state: boolean;
+
   let newBusiness: IBusinessQuiz[] = [];
   const businessQuiz: IBusinessQuiz[] = businessData;
   
   newBusiness = businessQuiz.map((b) => {
-    categoryActivity = b.businessCategory.byBusinessActivity.filter(checkCategoryActivityBusiness);
-    if (categoryActivity.length > 0) {
-      console.log(categoryActivity);
-      console.log(b.businessCategory.name);
-      return b;
+    if (filterSelectedBusiness.activityBusiness.length > 0) {
+      categoryActivity = b.businessCategory.byBusinessActivity.filter(checkCategoryActivityBusiness);
+      if (categoryActivity.length <= 0) {
+        return null;
+      }
     }
+    if (filterSelectedBusiness.businessTargetAudience.length > 0) {
+      businessTargetAudience = b.businessCategory.businessTargetAudience.filter(checkCategoryBusinessTargetAudience);
+      if (businessTargetAudience.length <= 0) {
+        return null;
+      }
+    }
+    if (filterSelectedBusiness.state.length > 0) {
+      state = filterSelectedBusiness.state.includes(b.businessCategory.state);
+      if (!state) {
+        return null;
+      }
+    }
+    
+    return b;    
   }).filter(Boolean);
-
-  console.log(newBusiness);
-  setBusinessQuiz(newBusiness)
+  
+  setBusinessQuiz(newBusiness);
 }
 
   return (
     <>
       {isFilter === "business" && <FilterModal visible={isOpen} close={Close} />}
+      {isFilter === "softwareDevelopment" && <FilterModal visible={isOpen} close={Close} />}
       <Modal
         transparent
         animationType="slide"

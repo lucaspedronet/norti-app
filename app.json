@@ -7,6 +7,19 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyCGz0CCHx4f--Gq4jHe_KGVd03Q1YGnxvQ"
+      }
+    },
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCGz0CCHx4f--Gq4jHe_KGVd03Q1YGnxvQ"
+        }
+      }
+    }
   }
 }
