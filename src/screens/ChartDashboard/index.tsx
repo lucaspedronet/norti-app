@@ -119,56 +119,6 @@ const Dashboard: React.FC = ({ route }) => {
       />
     </CardChart>
 
-    
-    <CardChart>
-      <TitleChart>Cidades</TitleChart>
-      <VictoryPie
-        animate
-        data={data.state}
-        theme={VictoryTheme.material}
-        labels={({ datum }) => `${datum.y}%`}
-        style={{ 
-          labels: { 
-            fontSize: 14
-          },
-          data: {
-            background: "#123",
-            placeItems: "#f44"
-          }
-      }}
-      />
-        <VictoryLegend 
-          x={80}
-          centerTitle
-          height={100}
-          orientation="horizontal"
-          theme={VictoryTheme.material}
-          gutter={20}
-          rowGutter={{ top: 20, bottom: 20 }}
-          style={{ border: { stroke: "black" } }}
-          data={[
-            { 
-              name: "Tocantins",
-              symbol: {
-                fill: "red",
-              },
-            }, 
-            { 
-              name: "Pará",
-              symbol: {
-                fill: "gold",
-              },
-            }, 
-            { 
-              name: "Amapá",
-              symbol: {
-                fill: "green",
-              },
-            },
-          ]}
-        />
-    </CardChart>
-
     <CardChart>
       <TitleChart>Cidades</TitleChart>
       <VictoryChart

@@ -4,7 +4,7 @@ import { IconCloseModal } from '../IconCloseModal';
 import { icons } from '../../utils/constants/iconsFiltersCategories';
 
 import { useModal } from '../../hooks/useModal';
-import { useFilter } from '../../hooks/useFilter';
+import { useFilterBusiness } from '../../hooks/useFilterBusiness';
 import { useBusiness, IBusinessQuiz } from '../../hooks/useBusiness';
 
 import { FilterModal } from '../../components/FilterModal';
@@ -43,10 +43,10 @@ type ISelectedFilter = "business" | "language" | "professional" | "softwareDevel
 const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCategoriesProps) => {
   const { Close, isOpen, showModal, isFilter, toggleFilter } = useModal();
   const { someFilter, setBusinessQuiz } = useBusiness();
-  const { allCleanFilters, filterSelectedBusiness } = useFilter();
+  const { allCleanFilters, filterSelectedBusiness } = useFilterBusiness();
 
   function handlerFilterModal(filter: ISelectedFilter) {
-    toggleFilter(filter)
+    toggleFilter(filter);
     showModal();
   }
 
@@ -116,6 +116,7 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
   return (
     <>
       {isFilter === "business" && <FilterModal visible={isOpen} close={Close} />}
+      {isFilter === "softwareDevelopment" && <FilterModal visible={isOpen} close={Close} />}
       <Modal
         transparent
         animationType="slide"

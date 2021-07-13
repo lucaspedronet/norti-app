@@ -6,7 +6,7 @@ import { ButtonSmall } from '../ButtonSmall';
 import { ButtonViewFilter } from '../ButtonViewFilter';
 import { ButtonRowSelected } from '../ButtonRowSelected';
 import { useModal } from '../../hooks/useModal';
-import { useFilter } from '../../hooks/useFilter';
+import { useFilterBusiness } from '../../hooks/useFilterBusiness';
 import { useBusiness } from '../../hooks/useBusiness';
 
 import { 
@@ -32,13 +32,13 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
    const { 
       filterState,
       filterBusiness,
-      filterProductServices,
+      filterBusinessTargetAudience,
       handlerSelectedBusiness,
       handlerSelectedFilters,
       handlerSelectedProduct,
       handlerSelectedState,
       allCleanFilters,
-   } = useFilter();
+   } = useFilterBusiness();
 
    function handlerApplicationFilter(): void {
       handlerSelectedFilters();
@@ -62,16 +62,6 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
                <CleanText disable={someFilter.includes("Empresas")}>Limpar</CleanText>
             </TouchableOpacity>
          </Header>
-            {/* <SessionCategory>
-               <ListCategory 
-                  data={state}
-                  numColumns={2}
-                  columnWrapperStyle={styles.container}
-                  ListHeaderComponent={<TitleCategory>Por estado</TitleCategory>}
-                  keyExtractor={(state) => String(state.id)}
-                  renderItem={({ item }) =>  <ButtonFilterItem item={item} />}
-               />
-            </SessionCategory> */}
             <SessionCategory>
                <TitleCategory>Estado</TitleCategory>
                <BoxCategory>
@@ -95,8 +85,8 @@ const FilterModal: React.FC<IFilterModalProps> = ({ close }: IFilterModalProps) 
                </ByBusinessActivity>
             </SessionCategory>
             <SessionCategory>
-               <TitleCategory>Produto e serviço digital</TitleCategory>
-               {filterProductServices.map((p) => (
+               <TitleCategory>Público alvo</TitleCategory>
+               {filterBusinessTargetAudience.map((p) => (
                   <ButtonRowSelected
                      key={p.id}
                     onPress={() => handlerSelectedProduct(p.id)}

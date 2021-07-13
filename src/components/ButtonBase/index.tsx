@@ -5,7 +5,7 @@ import { Container, TitleButton } from './styles';
 
 interface IButtonBaseProps extends TouchableOpacityProps {
    children: string;
-   isButton: "primary" | "secondary";
+   isButton?: "primary" | "secondary";
 }
 
 const ButtonBase: React.FC<IButtonBaseProps> = ({ children, isButton = "primary", ...rest }: IButtonBaseProps) => {

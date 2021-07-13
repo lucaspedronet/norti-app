@@ -37,7 +37,6 @@ module.exports = [
           "testMethodology": ["TDD (Test-driven Development)"],
           "testUnitaryFrontBack": ["Visual Studio Test Professional"],
           "typeArchitectureProject": ["Arquiteturas em camadas"]
-   
        },
        "professionalCategory": {
           "timeBusiness": "Entre 3 e 5 anos",
