@@ -23,7 +23,7 @@ export const Header = styled.View`
   height: ${RFPercentage(16)}px;
 
   padding: 16px 29px;
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const TitleHeader = styled.Text.attrs({
@@ -95,7 +95,7 @@ export const BusinessContainer = styled.View`
   padding: 21px 0 16px 24px;
   border-radius: 12px;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const BusinessHeader = styled.View`
@@ -114,7 +114,7 @@ export const AmountFilterText = styled.Text`
 
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(10)}px;
-  color: ${({ theme }) => theme.colors.backgroundCard};
+  color: ${({ theme }) => theme.card.backgroundDefault};
   text-align: center;
 
   width: 15px;

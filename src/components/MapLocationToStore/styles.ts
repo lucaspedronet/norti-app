@@ -25,7 +25,7 @@ export const AddressText = styled.Text.attrs({
   width: ${RFValue(154)}px;
   flex: 1;
   margin-right: 12px;
-  font-family: ${({ theme }) => theme.fonts.IBM_Regular};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-weight: 400;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxxs)}px;
 

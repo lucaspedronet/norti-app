@@ -47,5 +47,5 @@ export const CardChart =  styled.View`
   border-radius: 12px;
   elevation: 5;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;

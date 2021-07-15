@@ -37,8 +37,8 @@ const Home: React.FC = () => {
     navigate("Dashboard", { data: 'Teste..'});
   }
 
-  function navigationProfileStore(): void {
-    navigate("ProfileStore");
+  function navigationProfileStore(business: any): void {
+    navigate("ProfileStore", { business });
   }
 
   return(
@@ -73,9 +73,9 @@ const Home: React.FC = () => {
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item, index }) => {
             if (index %2 === 0) {
-              return <BusinessCardRight business={item} onPress={navigationProfileStore} />;
+              return <BusinessCardRight business={item} onPress={() => navigationProfileStore(item)} />;
             }
-            return <BusinessCardLeft business={item} onPress={navigationProfileStore} />;
+            return <BusinessCardLeft business={item} onPress={() => navigationProfileStore(item)} />;
           }}
         />
       </Container>

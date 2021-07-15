@@ -28,7 +28,7 @@ export const ContainerItem = styled.TouchableOpacity<ICategorySelected>`
   border-radius: 12px;
   margin-bottom: 12px;
   
-  background-color: ${({ theme, selected }) => selected ? theme.colors.primaryLight : theme.colors.backgroundCard};
+  background-color: ${({ theme, selected }) => selected ? theme.colors.primaryLight : theme.card.backgroundDefault};
 `;
 
 export const TitleItem = styled.Text<ICategorySelected>`
