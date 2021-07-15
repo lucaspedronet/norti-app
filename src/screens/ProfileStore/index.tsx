@@ -4,7 +4,6 @@ import { ImageProps, View } from 'react-native';
 import { HeaderBase } from '../../components/HeaderBase';
 import { MapLocationToStore } from '../../components/MapLocationToStore'
 
-import StoreAvatarLarge from '../../assets/avatar-01.png'
 import Avatar_1 from '../../assets/avatar-01.png'
 import Avatar_2 from '../../assets/avatar-02.png'
 import Avatar_3 from '../../assets/avatar-03.png'
@@ -97,7 +96,9 @@ const teamsData: TeamProps[] = [
    },
 ]
 
-const ProfileStore = () => {
+const ProfileStore = ({ route }) => {
+   const { business } = route.params;
+   console.log(business);
    const [teams, setTeams] = useState<TeamProps[]>([]);
 
    useEffect(() => setTeams(teamsData), []);
@@ -106,11 +107,11 @@ const ProfileStore = () => {
      <Container>
         <HeaderBase title="Perfil" icon />
         <StoreInfo>
-           <StoreAvatar source={StoreAvatarLarge} />
-           <StoreName>Las Vegas Barber Shop</StoreName>
+           <StoreAvatar source={business.photoAvatar} />
+           <StoreName>{business.businessCategory.name}</StoreName>
            <StoreLocation>
               <Icon name="location-outline" />
-              <LocationText>Porto Nacional, TO</LocationText>
+              <LocationText>{business.businessCategory.city}</LocationText>
            </StoreLocation>
         </StoreInfo>
 
@@ -125,16 +126,15 @@ const ProfileStore = () => {
            </View>
            <View>
               <NumberFavoriteText>291</NumberFavoriteText>
-              <NumberFavoriteTitle>Favoritos</NumberFavoriteTitle>
+              <NumberFavoriteTitle>Clientes</NumberFavoriteTitle>
            </View>
         </StoreNumberContainer>
 
         <StoreContentContainer>
 
-           <StoreHelloWorldText>Bem vindo, Cliente! 👊🏼🍺</StoreHelloWorldText>
+           <StoreHelloWorldText>Bem vindo, Cliente! 👊🏼</StoreHelloWorldText>
            <StoreDescriptionText>
-              Aqui você encontra serviços de qualidade, grande variedade de produtos para os cuidados com cabelo e barba 
-              e uma varidade de cervejas bem geladas para acompanhar.
+              {business.description}
            </StoreDescriptionText>
 
 

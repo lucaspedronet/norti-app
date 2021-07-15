@@ -22,7 +22,7 @@ export const Container = styled.ScrollView`
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const Header = styled.View`
@@ -38,7 +38,7 @@ export const Header = styled.View`
   align-items: center;
   justify-content: space-between;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const MaskBackground = styled.View`
@@ -77,7 +77,7 @@ export const SessionCategory = styled.View`
   height: auto;
   padding-bottom: ${RFValue(32)}px;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const BoxCategory = styled.View`
@@ -127,7 +127,7 @@ export const ListCategory = styled(
   margin: 0px;
   padding: 0px;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const Footer = styled.View`
@@ -139,5 +139,5 @@ export const Footer = styled.View`
 
   border-top-width: 0.5px;
   border-color: ${({ theme }) => theme.colors.shadowsCard};
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;

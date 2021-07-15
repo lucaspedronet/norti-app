@@ -23,7 +23,7 @@ export const BusinessContainer = styled.View`
   padding: 21px 0 16px 24px;
   border-radius: 12px;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const BusinessHeader = styled.View`

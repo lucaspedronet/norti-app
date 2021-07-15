@@ -6,7 +6,7 @@ import { TeamProps } from './index';
 
 export const Container = styled.ScrollView`
   flex: 1;
-  background-color: ${({ theme }) => theme.screen.background};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const StoreInfo = styled.View`
@@ -26,7 +26,7 @@ export const StoreAvatar = styled.Image`
 `;
 
 export const StoreName = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.md)}px;
 
@@ -34,7 +34,7 @@ export const StoreName = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-default']};
+  color: #3D3D4A;
 `;
 
 export const StoreLocation = styled.View`
@@ -50,11 +50,11 @@ export const Icon = styled(Ionicons)`
   margin: 0 10px;
 
   font-size: 16px;
-  color: ${({ theme }) => theme.neutralColors.dark['dark-lighter']};
+  color: rgba(114, 114, 133, 1);
 `;
 
 export const LocationText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_Medium};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-weight: 500;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -62,7 +62,7 @@ export const LocationText = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-lighter']};
+  color: rgba(114, 114, 133, 1);
 `;
 
 export const StoreNumberContainer = styled.View`
@@ -77,11 +77,11 @@ export const StoreNumberContainer = styled.View`
   border-top-right-radius: ${({ theme }) => theme.card.borderRadius * 2}px;
 
   padding: ${RFValue(20)}px ${RFValue(40)}px;
-  background-color: ${({ theme }) => theme.card.backgroundPurpleDefault};
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const NumberServiceText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.md - 2)}px;
 
@@ -89,11 +89,11 @@ export const NumberServiceText = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.brandColors.white};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const NumberFavoriteText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.md - 2)}px;
 
@@ -101,11 +101,11 @@ export const NumberFavoriteText = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.brandColors.white};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const NumberAttendanceText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.md - 2)}px;
 
@@ -113,11 +113,11 @@ export const NumberAttendanceText = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.brandColors.white};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const NumberServiceTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_Medium};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-weight: 500;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -125,11 +125,11 @@ export const NumberServiceTitle = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.brandColors.white + '80'};
+  color: ${({ theme }) => theme.colors.white + '80'};
 `;
 
 export const NumberAttendanceTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_Medium};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-weight: 500;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -137,11 +137,11 @@ export const NumberAttendanceTitle = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.brandColors.white + '80'};
+  color: ${({ theme }) => theme.colors.white + '80'};
 `;
 
 export const NumberFavoriteTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_Medium};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-weight: 500;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -149,7 +149,7 @@ export const NumberFavoriteTitle = styled.Text`
   font-style: normal;
   text-align: center;
 
-  color: ${({ theme }) => theme.brandColors.white + '80'};
+  color: ${({ theme }) => theme.colors.white + '80'};
 `;
 
 
@@ -168,7 +168,7 @@ export const StoreContentContainer = styled.View`
 `;
 
 export const StoreHelloWorldText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xs)}px;
 
@@ -178,11 +178,11 @@ export const StoreHelloWorldText = styled.Text`
 
   margin-bottom: 8px;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-default']};
+  color: #3D3D4A;
 `;
 
-export const StoreDescriptionText = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_Regular};
+export const StoreDescriptionText = styled.Text.attrs({ numberOfLines: 7 })`
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-weight: 400;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -190,7 +190,7 @@ export const StoreDescriptionText = styled.Text`
   font-style: normal;
   text-align: justify;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-light']};
+  color: #3D3D4A;
 `;
 
 export const StoreTeam = styled.View`
@@ -200,7 +200,7 @@ export const StoreTeam = styled.View`
 
 export const TeamTitle = styled.Text`
 
-font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xs)}px;
 
@@ -210,7 +210,7 @@ font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
 
   margin-bottom: 8px;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-default']};
+  color: #3D3D4A;
 `;
 
 export const TeamList = styled(
@@ -241,7 +241,7 @@ export const TeamAvatar = styled.Image`
 `;
 
 export const TeamName = styled.Text.attrs({ numberOfLines: 2 })`
-  font-family: ${({ theme }) => theme.fonts.IBM_Regular};
+  font-family: ${({ theme }) => theme.fonts.regular};
   font-weight: 400;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -250,7 +250,7 @@ export const TeamName = styled.Text.attrs({ numberOfLines: 2 })`
   margin-top: 8px;
   text-align: center;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-light']};
+  color: #3D3D4A;
   `;
 
 
@@ -264,7 +264,7 @@ export const SocialContactStore = styled.View`
 `;
 
 export const TitleContactStore = styled.Text.attrs({ numberOfLines: 1 })`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xs)}px;
 
@@ -275,7 +275,7 @@ export const TitleContactStore = styled.Text.attrs({ numberOfLines: 1 })`
 
   margin: 0;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-default']};
+  color: #3D3D4A;
 `;
 
 export const ContactContainer = styled.View`
@@ -305,7 +305,7 @@ export const ContactItem = styled.TouchableOpacity`
 `;
 
 export const ContactNameText = styled.Text.attrs({ numberOfLines: 1 })`
-  font-family: ${({ theme }) => theme.fonts.IBM_Medium};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-weight: 500;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs)}px;
 
@@ -314,5 +314,5 @@ export const ContactNameText = styled.Text.attrs({ numberOfLines: 1 })`
   margin-left: 8px;
   text-align: left;
 
-  color: ${({ theme }) => theme.neutralColors.dark['dark-light']};
+  color: ${({ theme }) => theme.colors.textCard};
 `;

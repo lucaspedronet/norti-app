@@ -20,7 +20,7 @@ export const HeaderIcon = styled(MaterialIcons)`
 `;
 
 export const HeaderTitle = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.IBM_SemiBold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xxs + 2)}px;
 

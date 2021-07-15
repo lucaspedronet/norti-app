@@ -11,7 +11,7 @@ export const Container = styled.View`
   width: 100%;
   min-height: 50%;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 `;
@@ -42,7 +42,7 @@ export const Icon = styled(MaterialIcons)<IIcon>`
 
   font-size: ${RFValue(25)}px;
   background-color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.primaryLight : theme.colors.backgroundSelectedFilter };
-  color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.colors.backgroundCard };
+  color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.card.backgroundDefault };
 `;
 
 export const IconCode = styled(FontAwesome)<IIcon>`
@@ -51,7 +51,7 @@ export const IconCode = styled(FontAwesome)<IIcon>`
 
   font-size: ${RFValue(25)}px;
   background-color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.primaryLight : theme.colors.backgroundSelectedFilter };
-  color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.colors.backgroundCard };
+  color: ${({ theme, activeFilter }) => !activeFilter ? theme.colors.title : theme.card.backgroundDefault };
 `;
 
 export const TitleText = styled.Text`
@@ -69,7 +69,7 @@ export const Body = styled.View`
 
   padding: ${RFValue(12)}px ${RFValue(20)}px;
 
-  background-color: ${({ theme }) => theme.colors.backgroundCard};
+  background-color: ${({ theme }) => theme.card.backgroundDefault};
 `;
 
 export const CategoryFilter = styled.TouchableOpacity.attrs({ activeOpacity: 0.3 })`

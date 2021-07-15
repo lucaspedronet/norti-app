@@ -16,7 +16,7 @@ export const ContainerItem = styled.TouchableOpacity<ICategorySelected>`
   margin-bottom: 8px;
   margin-right: 8px;
   
-  background-color: ${({ theme, selected }) => selected ? theme.colors.primaryLight : theme.colors.backgroundCard};
+  background-color: ${({ theme, selected }) => selected ? theme.colors.primaryLight : theme.card.backgroundDefault};
 `;
 
 export const BackgroundButton = styled.View<ICategorySelected>`
