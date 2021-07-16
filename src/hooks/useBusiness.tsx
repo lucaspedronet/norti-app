@@ -42,6 +42,12 @@ export interface IBusinessQuiz {
    selected: boolean;
    photoAvatar: ImageSourcePropType;
    description: string;
+   instagram: string;
+   facebook: string;
+   phone: string;
+   website: string;
+   latitude: string;
+   longitude: string;
    businessCategory: ICategoryBusiness;
    softwareDevelopmentCategory: ICategorySoftwareDevelopment;
    languageCategory: ICategoryLanguage;
