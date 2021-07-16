@@ -66,10 +66,8 @@ export interface IBusinessQuiz {
  const BusinessProvider: React.FC = ({ children }) => {
    const [listBusinessQuiz, setListBusinessQuiz] = useState<IBusinessQuiz[]>(() => []);
    const [someFilterApplication, setSomeFilterApplication] = useState<string[]>([]);
-   const [newListBusiness, setNewListBusiness] = useState<IBusinessQuiz[]>([]);
 
    const setBusinessQuiz = (data: IBusinessQuiz[]) => {
-      console.log(data);
       setListBusinessQuiz(() => data);
    }
 
