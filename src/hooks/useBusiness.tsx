@@ -42,6 +42,12 @@ export interface IBusinessQuiz {
    selected: boolean;
    photoAvatar: ImageSourcePropType;
    description: string;
+   instagram: string;
+   facebook: string;
+   phone: string;
+   website: string;
+   latitude: string;
+   longitude: string;
    businessCategory: ICategoryBusiness;
    softwareDevelopmentCategory: ICategorySoftwareDevelopment;
    languageCategory: ICategoryLanguage;
@@ -60,10 +66,8 @@ export interface IBusinessQuiz {
  const BusinessProvider: React.FC = ({ children }) => {
    const [listBusinessQuiz, setListBusinessQuiz] = useState<IBusinessQuiz[]>(() => []);
    const [someFilterApplication, setSomeFilterApplication] = useState<string[]>([]);
-   const [newListBusiness, setNewListBusiness] = useState<IBusinessQuiz[]>([]);
 
    const setBusinessQuiz = (data: IBusinessQuiz[]) => {
-      console.log(data);
       setListBusinessQuiz(() => data);
    }
 

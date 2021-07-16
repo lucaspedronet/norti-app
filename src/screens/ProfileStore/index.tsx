@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageProps, View } from 'react-native';
+import { ImageProps, Linking, View } from 'react-native';
 
 import { HeaderBase } from '../../components/HeaderBase';
 import { MapLocationToStore } from '../../components/MapLocationToStore'
@@ -99,9 +99,46 @@ const teamsData: TeamProps[] = [
 const ProfileStore = ({ route }) => {
    const { business } = route.params;
    console.log(business);
+   
+   const { instagram, facebook, phone, website, longitude, latitude } = business;
    const [teams, setTeams] = useState<TeamProps[]>([]);
-
+   
    useEffect(() => setTeams(teamsData), []);
+
+   
+  const openLink = (title: string) => {
+     switch(title) {
+        case 'Facebook': {
+           if (facebook.length <= 0) return;
+            Linking.openURL(`https://www.facebook.com/${facebook}`).catch(() => {
+               Linking.openURL(`https://www.facebook.com/${facebook}`);
+            });
+           break;
+        };
+        case 'Instagram': {
+         if (instagram.length <= 0) return;
+            Linking.openURL(`https://www.instagram.com/${instagram}`).catch(() => {
+               Linking.openURL(`https://www.instagram.com/${instagram}`);
+            });
+           break;
+        };
+        case 'Ligar': {
+           if (phone.length <= 0) return;
+           Linking.openURL(`tel:${phone}`).catch(() => {
+              Linking.openURL(`tel:${phone}`);
+           });
+           break;
+        };
+        default: {
+           if (website.length <= 0) return;
+           Linking.openURL(`https://${website}`).catch(() => {
+              Linking.openURL(`https://${website}`);
+           });
+           break;
+        }
+
+     }
+};
 
   return (
      <Container>
@@ -115,48 +152,15 @@ const ProfileStore = ({ route }) => {
            </StoreLocation>
         </StoreInfo>
 
-        <StoreNumberContainer>
-           <View>
-              <NumberServiceText>23</NumberServiceText>
-              <NumberServiceTitle>Serviços</NumberServiceTitle>
-           </View>
-           <View>
-              <NumberAttendanceText>1.820</NumberAttendanceText>
-              <NumberAttendanceTitle>Atendimentos</NumberAttendanceTitle>
-           </View>
-           <View>
-              <NumberFavoriteText>291</NumberFavoriteText>
-              <NumberFavoriteTitle>Clientes</NumberFavoriteTitle>
-           </View>
-        </StoreNumberContainer>
-
         <StoreContentContainer>
 
            <StoreHelloWorldText>Bem vindo, Cliente! 👊🏼</StoreHelloWorldText>
            <StoreDescriptionText>
               {business.description}
            </StoreDescriptionText>
-
-
-           <StoreTeam>
-              <TeamTitle>Nossa equipe</TeamTitle>
-              <TeamList
-                 horizontal
-                 showsHorizontalScrollIndicator={false}
-                 data={teams}
-                 keyExtractor={( item ) => item.id.toString()}
-                 renderItem={({ item }) => {
-                    return (
-                       <TeamItem>
-                          <TeamAvatar source={item.avatar} />
-                          <TeamName>{item.name}</TeamName>
-                       </TeamItem>
-                    );
-                 }}
-              />
-            </StoreTeam>
-
-            <MapLocationToStore />
+            
+            <TeamTitle>Localização</TeamTitle>
+            <MapLocationToStore longitude={longitude} latitude={latitude} />
 
             <SocialContactStore>
                <TitleContactStore>Precisa falar com a gente?</TitleContactStore>
@@ -164,7 +168,7 @@ const ProfileStore = ({ route }) => {
                   {IconsContact.map((icon) => {
                      const { IconContact, name, title, size, color } = icon;
                      return (
-                        <ContactItem key={title}>
+                        <ContactItem key={title} onPress={() => openLink(title)}>
                            <IconContact name={name} size={size} color={color} />
                            <ContactNameText>{title}</ContactNameText>
                         </ContactItem>

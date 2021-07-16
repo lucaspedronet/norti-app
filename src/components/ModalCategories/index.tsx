@@ -8,6 +8,7 @@ import { useFilterBusiness } from '../../hooks/useFilterBusiness';
 import { useBusiness, IBusinessQuiz } from '../../hooks/useBusiness';
 
 import { FilterModal } from '../../components/FilterModal';
+import { FilterModalSoftwareDevelop } from '../../components/FilterModalSoftwareDevelop';
 import { ButtonBase } from '../../components/ButtonBase';
 
 import businessData from '../../services/data.js'
@@ -77,16 +78,25 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
  const checkCategoryBusinessTargetAudience = (target: string) => {
    return filterSelectedBusiness.businessTargetAudience.includes(target);
  }
+  
+ const checkCategoryProcessDevelopment = (target: string) => {
+   return filterSelectedBusiness.processDevelopment.includes(target);
+ }
     
  
  function onFilterInBusinessList() {
   let businessTargetAudience: string[];
   let categoryActivity: string[];
   let state: boolean;
+  let timeDevelopment: boolean;
+  let processDevelopment: string[];
 
   let newBusiness: IBusinessQuiz[] = [];
   const businessQuiz: IBusinessQuiz[] = businessData;
   
+  /**
+   * As opções de filtros selecionadas são aplicadas a lista de empresas
+   */
   newBusiness = businessQuiz.map((b) => {
     if (filterSelectedBusiness.activityBusiness.length > 0) {
       categoryActivity = b.businessCategory.byBusinessActivity.filter(checkCategoryActivityBusiness);
@@ -106,6 +116,21 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
         return null;
       }
     }
+
+    if (filterSelectedBusiness.processDevelopment.length > 0) {
+      processDevelopment = b.softwareDevelopmentCategory.processDevelopment.filter(checkCategoryProcessDevelopment);
+      if (processDevelopment.length <= 0) {
+        return null;
+      }
+    }
+
+    if (filterSelectedBusiness.timeDevelopment.length > 0) {
+      console.log('chegou aqui...')
+      timeDevelopment = filterSelectedBusiness.timeDevelopment.includes(b.softwareDevelopmentCategory.timeDevelopment);
+      if (!timeDevelopment) {
+        return null;
+      }
+    }
     
     return b;    
   }).filter(Boolean);
@@ -116,7 +141,7 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
   return (
     <>
       {isFilter === "business" && <FilterModal visible={isOpen} close={Close} />}
-      {isFilter === "softwareDevelopment" && <FilterModal visible={isOpen} close={Close} />}
+      {isFilter === "softwareDevelopment" && <FilterModalSoftwareDevelop visible={isOpen} close={Close} />}
       <Modal
         transparent
         animationType="slide"

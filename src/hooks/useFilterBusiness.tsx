@@ -85,7 +85,30 @@ const businessTargetAudienceData: ICategoryQuiz[] = [
    },
 ];
 
-type IBusinessFilter = "state" | "activityBusiness" | "businessTargetAudience";
+const processDevelopData: ICategoryQuiz[] = [
+   { id: 1, title: 'Agile Modeling', selected: false, object: 'processDevelopment' },
+   { id: 2, title: 'Agile Unified Process', selected: false, object: 'processDevelopment' },
+   { id: 3, title: 'Behavior Driven Develop', selected: false, object: 'processDevelopment' },
+   { id: 4, title: 'Crystal', selected: false, object: 'processDevelopment' },
+   { id: 5, title: 'Dynamic Systems Develop', selected: false, object: 'processDevelopment' },
+   { id: 6, title: 'Extreme Programming', selected: false, object: 'processDevelopment' },
+   { id: 7, title: 'Feature Driven Develop', selected: false, object: 'processDevelopment' },
+   { id: 8, title: 'Lean Software Develop', selected: false, object: 'processDevelopment' },
+   { id: 9, title: 'Microsoft Solution', selected: false, object: 'processDevelopment' },
+   { id: 10, title: 'Rapid Application', selected: false, object: 'processDevelopment' },
+   { id: 11, title: 'RUP', selected: false, object: 'processDevelopment' },
+   { id: 12, title: 'Scrum', selected: false, object: 'processDevelopment' },
+   { id: 13, title: 'Test Drive Develop', selected: false, object: 'processDevelopment' },
+   { id: 14, title: 'Agile software development', selected: false, object: 'processDevelopment' },
+]
+
+const timeDevelopmentData: ICategoryQuiz[] = [
+   { id: 1, title: 'Até 6 meses', selected: false, object: 'timeDevelopment' },
+   { id: 2, title: 'Entre 6 meses e 1 ano', selected: false, object: 'timeDevelopment' },
+   { id: 3, title: 'Entre 1 e 3 anos', selected: false, object: 'timeDevelopment' },
+   { id: 4, title: 'Acima de 3 anos', selected: false, object: 'timeDevelopment' },
+]
+type IBusinessFilter = "state" | "activityBusiness" | "businessTargetAudience" | "processDevelopment" | "timeDevelopment";
 
 interface ICategoryQuiz {
    id: number;
@@ -101,8 +124,12 @@ interface ICategoryQuiz {
 interface IFilterContext {
    filterState: ICategoryQuiz[];
    filterBusiness: ICategoryQuiz[];
+   filterProcessDevelop: ICategoryQuiz[];
+   filterTimeDevelopment: ICategoryQuiz[];
    filterBusinessTargetAudience: ICategoryQuiz[];
    filterSelectedBusiness: IFilterBusinessSelected,
+   handlerSelectedTimeDevelopment(id: number): void;
+   handlerSelectedProcessDevelop(id: number): void;
    handlerSelectedState(id: number): void;
    handlerSelectedProduct(id: number): void;
    handlerSelectedBusiness(id: number): void;
@@ -116,18 +143,23 @@ const FilterProvider: React.FC = ({ children }) => {
    const { someFilter } = useBusiness();
    const [state, setState] = useState<ICategoryQuiz[]>([]);
    const [business, setBusiness] = useState<ICategoryQuiz[]>([]);
-   const [businessTargetAudience, setProductServices] = useState<ICategoryQuiz[]>([]);
+   const [businessTargetAudience, setBusinessTargetAudience] = useState<ICategoryQuiz[]>([]);
+   const [processDevelopment, setProcessDevelop] = useState<ICategoryQuiz[]>([]);
+   const [timeDevelopment, setTimeDevelopment] = useState<ICategoryQuiz[]>([]);
    const [filterSelected, setFilterSelected] = useState<IFilterBusinessSelected>({
       businessTargetAudience: [],
       activityBusiness: [],
       state: [],
+      processDevelopment: [],
+      timeDevelopment: []
    });
 
-   console.log(filterSelected);
    useEffect(() => {
-      setProductServices(() => businessTargetAudienceData);
+      setBusinessTargetAudience(() => businessTargetAudienceData);
       setBusiness(() => businessData);
       setState(() => stateData);
+      setProcessDevelop(() => processDevelopData);
+      setTimeDevelopment(() => timeDevelopmentData);
    }, []);
    
    /**
@@ -146,6 +178,18 @@ const FilterProvider: React.FC = ({ children }) => {
       
       return someFilter[3] = '';
    }, [state, businessTargetAudience, business]);
+   
+   useMemo(() => {
+      if (processDevelopment.some((s) => s.selected)) {
+         return someFilter[2] = 'Metodologias';
+      }
+      
+      if (timeDevelopment.some((s) => s.selected)) {
+         return someFilter[2] = 'Metodologias';
+      }
+      
+      return someFilter[2] = '';
+   }, [processDevelopment, timeDevelopment, someFilter]);
    /**
     * filtra todas as opções de filtros selecionada das categorias state, business e businessTargetAudience
     */
@@ -153,8 +197,8 @@ const FilterProvider: React.FC = ({ children }) => {
       const filterState: string[] = [];
       const filterBusiness: string[] = [];
       const filterTargetAudience: string[] = [];
-
-      const formattedString = (filter: string): string => filter.toLocaleLowerCase('pt-br').trim();
+      const filterProcessDevelopment: string[] = [];
+      const filterTimeDevelopment: string[] = [];
 
       const checkFilterSelected = (filter: ICategoryQuiz) => {
          if (filter.selected) {
@@ -171,6 +215,14 @@ const FilterProvider: React.FC = ({ children }) => {
                   filterState.push(filter.title);
                   break;
                }
+               case 'processDevelopment': {
+                  filterProcessDevelopment.push(filter.title);
+                  break;
+               }
+               case 'timeDevelopment': {
+                  filterTimeDevelopment.push(filter.title);
+                  break;
+               }
             }
          }
       }
@@ -178,15 +230,19 @@ const FilterProvider: React.FC = ({ children }) => {
       state.map(checkFilterSelected);
       business.map(checkFilterSelected);
       businessTargetAudience.map(checkFilterSelected);
+      processDevelopment.map(checkFilterSelected);
+      timeDevelopment.map(checkFilterSelected);
 
       setFilterSelected((params) => {
          params.state = filterState;
          params.activityBusiness = filterBusiness;
          params.businessTargetAudience = filterTargetAudience;
+         params.processDevelopment = filterProcessDevelopment;
+         params.timeDevelopment = filterTimeDevelopment;
 
          return params;
       })
-   }, [state,business, businessTargetAudience]);
+   }, [state, business, businessTargetAudience, processDevelopment, timeDevelopment]);
    
    const handlerSelectedState = useCallback((id: number) => {
       setState((params) => {
@@ -203,7 +259,7 @@ const FilterProvider: React.FC = ({ children }) => {
    }, []);
    
    const handlerSelectedProduct = useCallback((id: number) => {
-      setProductServices((params) => {
+      setBusinessTargetAudience((params) => {
          const newProduct = params.map((state) => {
             if (state.id === id) {
                state.selected = !state.selected
@@ -229,16 +285,48 @@ const FilterProvider: React.FC = ({ children }) => {
          return newProduct;
       });
    }, []);
+   
+   const handlerSelectedProcessDevelop = useCallback((id: number) => {
+      setProcessDevelop((params) => {
+         const newProduct = params.map((state) => {
+            if (state.id === id) {
+               state.selected = !state.selected
+               return state;
+            }
+            return state;
+         });
+
+         return newProduct;
+      });
+   }, []);
+   
+   const handlerSelectedTimeDevelopment = useCallback((id: number) => {
+      setTimeDevelopment((params) => {
+         const newProduct = params.map((state) => {
+            if (state.id === id) {
+               state.selected = !state.selected
+               return state;
+            }
+            return state;
+         });
+
+         return newProduct;
+      });
+   }, []);
 
    
   const allCleanFilters = useCallback(() => {
    setState((params) => params.map((item) => Object.assign(item, { ...item, selected: false })));
    setBusiness((params) => params.map((item) => Object.assign(item, { ...item, selected: false })));
-   setProductServices((params) => params.map((item) => Object.assign(item, { ...item, selected: false })));
+   setBusinessTargetAudience((params) => params.map((item) => Object.assign(item, { ...item, selected: false })));
+   setProcessDevelop((params) => params.map((item) => Object.assign(item, { ...item, selected: false })));
+   setTimeDevelopment((params) => params.map((item) => Object.assign(item, { ...item, selected: false })));
    setFilterSelected((params) => {
       params.state = [];
       params.activityBusiness = [];
       params.businessTargetAudience = [];
+      params.processDevelopment = [];
+      params.timeDevelopment = [];
 
       return params;
    })
@@ -248,8 +336,12 @@ const FilterProvider: React.FC = ({ children }) => {
       <FilterContext.Provider value={{ 
          filterState: state,
          filterBusiness: business,
-         filterBusinessTargetAudience: businessTargetAudience,
+         filterTimeDevelopment: timeDevelopment,
          filterSelectedBusiness: filterSelected,
+         filterProcessDevelop: processDevelopment,
+         filterBusinessTargetAudience: businessTargetAudience,
+         handlerSelectedTimeDevelopment,
+         handlerSelectedProcessDevelop,
          handlerSelectedFilters,
          handlerSelectedBusiness,
          handlerSelectedProduct,
