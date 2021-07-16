@@ -152,47 +152,14 @@ const ProfileStore = ({ route }) => {
            </StoreLocation>
         </StoreInfo>
 
-        <StoreNumberContainer>
-           <View>
-              <NumberServiceText>23</NumberServiceText>
-              <NumberServiceTitle>Serviços</NumberServiceTitle>
-           </View>
-           <View>
-              <NumberAttendanceText>1.820</NumberAttendanceText>
-              <NumberAttendanceTitle>Atendimentos</NumberAttendanceTitle>
-           </View>
-           <View>
-              <NumberFavoriteText>291</NumberFavoriteText>
-              <NumberFavoriteTitle>Clientes</NumberFavoriteTitle>
-           </View>
-        </StoreNumberContainer>
-
         <StoreContentContainer>
 
            <StoreHelloWorldText>Bem vindo, Cliente! 👊🏼</StoreHelloWorldText>
            <StoreDescriptionText>
               {business.description}
            </StoreDescriptionText>
-
-
-           <StoreTeam>
-              <TeamTitle>Nossa equipe</TeamTitle>
-              <TeamList
-                 horizontal
-                 showsHorizontalScrollIndicator={false}
-                 data={teams}
-                 keyExtractor={( item ) => item.id.toString()}
-                 renderItem={({ item }) => {
-                    return (
-                       <TeamItem>
-                          <TeamAvatar source={item.avatar} />
-                          <TeamName>{item.name}</TeamName>
-                       </TeamItem>
-                    );
-                 }}
-              />
-            </StoreTeam>
-
+            
+            <TeamTitle>Localização</TeamTitle>
             <MapLocationToStore longitude={longitude} latitude={latitude} />
 
             <SocialContactStore>

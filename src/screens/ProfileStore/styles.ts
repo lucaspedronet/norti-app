@@ -200,7 +200,7 @@ export const StoreTeam = styled.View`
 
 export const TeamTitle = styled.Text`
 
-font-family: ${({ theme }) => theme.fonts.bold};
+  font-family: ${({ theme }) => theme.fonts.bold};
   font-weight: 600;
   font-size: ${({ theme }) => RFValue(theme.fontScale.xs)}px;
 
@@ -209,6 +209,7 @@ font-family: ${({ theme }) => theme.fonts.bold};
   text-align: left;
 
   margin-bottom: 8px;
+  margin-top: 32px;
 
   color: #3D3D4A;
 `;

@@ -94,6 +94,9 @@ const ModalCategories: React.FC<IModalCategoriesProps> = ({ close }: IModalCateg
   let newBusiness: IBusinessQuiz[] = [];
   const businessQuiz: IBusinessQuiz[] = businessData;
   
+  /**
+   * As opções de filtros selecionadas são aplicadas a lista de empresas
+   */
   newBusiness = businessQuiz.map((b) => {
     if (filterSelectedBusiness.activityBusiness.length > 0) {
       categoryActivity = b.businessCategory.byBusinessActivity.filter(checkCategoryActivityBusiness);
