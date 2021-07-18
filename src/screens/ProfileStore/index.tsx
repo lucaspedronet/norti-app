@@ -52,93 +52,46 @@ export type TeamProps = {
    avatar: ImageProps;
    name: string;
  }
- 
-const teamsData: TeamProps[] = [
-   {
-      id: 1,
-      avatar: Avatar_1,
-      name: 'Jéssica',
-   },
-   {
-      id: 2,
-      avatar: Avatar_2,
-      name: 'João Ricardo',
-   },
-   {
-      id: 3,
-      avatar: Avatar_3,
-      name: 'João Paulo',
-   },
-   {
-      id: 4,
-      avatar: Avatar_4,
-      name: 'Juliana Paula',
-   },
-   {
-      id: 10,
-      avatar: Avatar_1,
-      name: 'Jéssica',
-   },
-   {
-      id: 20,
-      avatar: Avatar_2,
-      name: 'João Ricardo',
-   },
-   {
-      id: 30,
-      avatar: Avatar_3,
-      name: 'João Paulo',
-   },
-   {
-      id: 40,
-      avatar: Avatar_4,
-      name: 'Juliana Paula',
-   },
-]
 
 const ProfileStore = ({ route }) => {
    const { business } = route.params;
    console.log(business);
    
    const { instagram, facebook, phone, website, longitude, latitude } = business;
-   const [teams, setTeams] = useState<TeamProps[]>([]);
    
-   useEffect(() => setTeams(teamsData), []);
-
-   
-  const openLink = (title: string) => {
-     switch(title) {
-        case 'Facebook': {
-           if (facebook.length <= 0) return;
-            Linking.openURL(`https://www.facebook.com/${facebook}`).catch(() => {
-               Linking.openURL(`https://www.facebook.com/${facebook}`);
+   const openLink = (title: string) => {
+      switch(title) {
+         case 'Facebook': {
+            if (facebook.length <= 0) return;
+               Linking.openURL(`https://www.facebook.com/${facebook}`).catch(() => {
+                  Linking.openURL(`https://www.facebook.com/${facebook}`);
+               });
+            break;
+         };
+         case 'Instagram': {
+            if (instagram.length <= 0) return;
+               Linking.openURL(`https://www.instagram.com/${instagram}`).catch(() => {
+                  Linking.openURL(`https://www.instagram.com/${instagram}`);
+               });
+            break;
+         };
+         case 'Ligar': {
+            if (phone.length <= 0) return;
+            Linking.openURL(`tel:${phone}`).catch(() => {
+               Linking.openURL(`tel:${phone}`);
             });
-           break;
-        };
-        case 'Instagram': {
-         if (instagram.length <= 0) return;
-            Linking.openURL(`https://www.instagram.com/${instagram}`).catch(() => {
-               Linking.openURL(`https://www.instagram.com/${instagram}`);
+            break;
+         };
+         default: {
+            if (website.length <= 0) return;
+            Linking.openURL(`https://${website}`).catch(() => {
+               Linking.openURL(`https://${website}`);
             });
-           break;
-        };
-        case 'Ligar': {
-           if (phone.length <= 0) return;
-           Linking.openURL(`tel:${phone}`).catch(() => {
-              Linking.openURL(`tel:${phone}`);
-           });
-           break;
-        };
-        default: {
-           if (website.length <= 0) return;
-           Linking.openURL(`https://${website}`).catch(() => {
-              Linking.openURL(`https://${website}`);
-           });
-           break;
-        }
+            break;
+         }
 
-     }
-};
+      }
+   };
 
   return (
      <Container>

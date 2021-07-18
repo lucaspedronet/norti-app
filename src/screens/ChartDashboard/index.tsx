@@ -14,7 +14,7 @@ import {
 } from "victory-native";
 
 import { PieChart } from "react-native-chart-kit";
-
+import { theme } from '../../globals/styles/theme';
 import { Container, TitleCategory, TitleChart, CardChart, HeaderCategory } from './styles';
 
 const Dashboard: React.FC = ({ route }) => {
@@ -32,15 +32,16 @@ const Dashboard: React.FC = ({ route }) => {
 
   const data = {
     langues: [
-      { x: 'TS', y: 38.5, },
-      { x: 'SQL', y: 15.4, },
-      { x: 'Python', y: 15.4, },
-      { x: 'PHP', y: 61.5, },
-      { x: 'JS', y: 76.9, },
-      { x: 'Java', y: 7.7, },
-      { x: 'Dart', y: 15.4, },
-      { x: 'Delphi', y: 15.4, },
-      { x: 'C#', y: 15.4, },
+      { x: 'SQL', y: 7.1, },
+      { x: 'Python', y: 14.3, },
+      { x: 'TypeScript', y: 35.7, },
+      { x: 'PHP', y: 64.3, },
+      { x: 'JavaScript', y: 78.6, },
+      { x: 'Java', y: 14.3, },
+      { x: 'Shell', y: 7.1, },
+      { x: 'Dart', y: 7.1, },
+      { x: 'Delphi', y: 14.3, },
+      { x: 'C#', y: 14.3, },
     ],
     city: [
       { x: 'Araguína', y: 15.4, },
@@ -53,7 +54,7 @@ const Dashboard: React.FC = ({ route }) => {
       { y: 21.4, x: "Pará" },
       { y: 7.1, x: "Amapá" },
     ],
-    targetBusiness: [
+    businessTargetAudience: [
       { y: 57.1, x: "B2B" },
       { y: 50, x: "B2B2C" },
       { y: 14.3, x: "B2C" },
@@ -61,35 +62,121 @@ const Dashboard: React.FC = ({ route }) => {
       { y: 21.4, x: "B2G" },
       { y: 7.1, x: "B2E" },
     ],
-    agilePractice: [
-      { y: 27.3, x: "XP"},
+    processDevelopment: [
+      { y: 27.3, x: "Extreme\nProgramming"},
       { y: 72.7, x: "Scrum",},
-      { y: 9.1, x: "ASD"}, 
+      { y: 9.1, x: "Agile Software\nDevelop"}, 
       { y: 9.1, x: "Kanban"}, 
-      { y: 18.2, x: "LSD"},
-      { y: 50, x: "B2B2C" },
+      { y: 18.2, x: "Lean Software\nDevelop"},
+    ],
+    methodologyBenefits: [
+      { y: 63.6, x: "Transparência nas\natividades"},
+      { y: 72.7, x: "Entendimento\nsobre Projeto",},
+      { y: 18.2, x: "Uso de Artefatos"},
+      { y: 9.1, x: "Uso de Diagramas"}, 
+      { y: 27.3, x: "Uso de\nDocumentação"},
+      { y: 90.9, x: "Ganho de\nAutonomia da equipe" },
+      { y: 63.6, x: "Redução de\nFalhas" },
+      { y: 72.7, x: "Melhoras na\ncomunicação" },
+      { y: 45.5, x: "Aumento nas\nEntregas" },
+    ],
+    methodologyDisadvantages: [ 
+      { y: 54.5, x: "Nenhuma"}, 
+      { y: 18.2, x: "Problemas com\nprozos"},
+      { y: 9.1, x: "Recurso Humano"},
+      { y: 9.1, x: "Responder as\nmudanças de projeto"},
+      { y: 9.1, x: "Visão do Projeto",},
     ],
   }
 
-  const dataPizza = [
+  const stateData = [
     {
       name: "Amapá",
       population: 7.7,
-      color: "rgba(51, 102, 204, 1)",
+      color: `${theme.uiColors['info-default']}`,
       legendFontColor: "#7F7F7F",
       legendFontSize: 15
     },
     {
       name: "Pará",
       population: 15.4,
-      color: "#ff9900",
+      color: `${theme.uiColors['amarelo']}`,
       legendFontColor: "#7F7F7F",
       legendFontSize: 15
     },
     {
       name: "Tocantins",
       population: 79.9,
-      color: "#0099c6",
+      color: `${theme.uiColors['success-default']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+  ];
+
+  const processDevelopmentData = [
+    {
+      name: "API",
+      population: 1,
+      color: `${theme.uiColors['azul-2']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "Assinatura",
+      population: 1,
+      color: `${theme.uiColors['amarelo']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "Marketplace",
+      population: 2,
+      color: `${theme.uiColors['roxo']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "SaaS e E-Commerce",
+      population: 1,
+      color: `${theme.uiColors['verder']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "SaaS",
+      population: 9,
+      color: `${theme.uiColors['azul']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+  ];
+
+  const timeDevelopment = [
+    {
+      name: "Até 6 meses",
+      population: 2,
+      color: `${theme.uiColors['azul-2']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "Entre 6 meses e 1 ano",
+      population: 3,
+      color: `${theme.uiColors['amarelo']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "Entre 1 e 3 anos",
+      population: 4,
+      color: `${theme.uiColors['roxo']}`,
+      legendFontColor: "#7F7F7F",
+      legendFontSize: 15
+    },
+    {
+      name: "Acima de 3 anos",
+      population: 2,
+      color: `${theme.uiColors['verder']}`,
       legendFontColor: "#7F7F7F",
       legendFontSize: 15
     },
@@ -104,7 +191,7 @@ const Dashboard: React.FC = ({ route }) => {
     <CardChart>
       <TitleChart>Estado</TitleChart>
       <PieChart
-        data={dataPizza}
+        data={stateData}
         width={width - 32}
         height={220}
         chartConfig={chartConfig}
@@ -184,7 +271,7 @@ const Dashboard: React.FC = ({ route }) => {
         }}
       >
         <VictoryBar
-          data={data.targetBusiness}
+          data={data.businessTargetAudience}
           labels={({ datum }) => `${datum.y}%`}
           barWidth={25}
           labelComponent={
@@ -212,9 +299,26 @@ const Dashboard: React.FC = ({ route }) => {
         />
         
       </VictoryChart>
-    
-    
     </CardChart>
+
+    <CardChart>
+      <TitleChart>Qual é o modelo de receita da empresa?</TitleChart>
+      <PieChart
+        data={processDevelopmentData}
+        width={width - 32}
+        height={200}
+        chartConfig={chartConfig}
+        accessor={"population"}
+        backgroundColor={"transparent"}
+        paddingLeft={"-30"}
+        center={[30, 0]}
+        style={{
+          paddingHorizontal: 0,
+          paddingVertical: 0,
+        }}
+      />
+    </CardChart>
+    
     <HeaderCategory>
       <TitleCategory>Desenvolvimento de software e metodologias</TitleCategory>
     </HeaderCategory>
@@ -224,6 +328,7 @@ const Dashboard: React.FC = ({ route }) => {
       <VictoryChart
         horizontal
         domainPadding={{ x: [20, 0], y: [0, 0]  }}
+        padding={{ top: 40, right: 10, bottom: 40, left: 90 }}
         theme={VictoryTheme.material}
         animate
         height={300}
@@ -231,13 +336,11 @@ const Dashboard: React.FC = ({ route }) => {
         style={{
           background: {
             fill: "#fff",
-
           },
-          
         }}
       >
         <VictoryBar
-          data={data.agilePractice}
+          data={data.processDevelopment}
           labels={({ datum }) => `${datum.y}%`}
           barWidth={20}
           labelComponent={
@@ -266,12 +369,133 @@ const Dashboard: React.FC = ({ route }) => {
         
       </VictoryChart>
     </CardChart>
+    
+    <CardChart>
+      <TitleChart>Quanto tempo de adesão à prática de desenvolvimento de software?</TitleChart>
+      <PieChart
+        data={timeDevelopment}
+        width={width - 32}
+        height={200}
+        chartConfig={chartConfig}
+        accessor={"population"}
+        backgroundColor={"transparent"}
+        paddingLeft={"-30"}
+        center={[30, 0]}
+        style={{
+          paddingHorizontal: 0,
+          paddingVertical: 0,
+        }}
+      />
+    </CardChart>
 
+    <CardChart>
+      <TitleChart>Ao adotar metodologias ágeis nos projetos de software, quais foram os benefícios alcançados?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [20, 0], y: [0, 0]  }}
+        padding={{ left: 120, right: 0, bottom: 40, top: 20 }}
+        theme={VictoryTheme.material}
+        animate
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.methodologyBenefits}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={15}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
+        
+      </VictoryChart>
+    </CardChart>
+    
+    <CardChart>
+      <TitleChart>Ao adotar metodologias ágeis nos projetos de software, quais foram as desvantagens?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [20, 0], y: [0, 0]  }}
+        padding={{ left: 120, right: 10, bottom: 40, top: 40 }}
+        theme={VictoryTheme.material}
+        animate
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.methodologyDisadvantages}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={25}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
+        
+      </VictoryChart>
+    </CardChart>
+    
+    <HeaderCategory>
+      <TitleCategory>Linguagens, frameworks, cloud computing e ferramentas</TitleCategory>
+    </HeaderCategory>
+    
     <CardChart>
       <TitleChart>Linguagens</TitleChart>
       <VictoryChart
         horizontal
         domainPadding={{ x: [10, 0], y: [0, 0]  }}
+        padding={{ top: 40, right: 10, bottom: 40, left: 70 }}
         theme={VictoryTheme.material}
         animate
         height={300}

@@ -45,6 +45,27 @@ const colors = {
    transparent: 'transparent',
 }
 
+const uiColors = {
+   'success-default': '#2BAF1F',
+   'success-lighter': '#F2FCF0',
+  
+   'info-default': '#0497F9',
+   'info-lighter': '#F2FAFC',
+
+   'warning-default': '#FFBF00',
+   'warning-lighter': '#FFFAF2',
+   
+   'danger-default': '#F53636',
+   'danger-lighter': '#FFF5F7',
+
+   'verder': '#109618',
+   'verder-2': '#33CC95',
+   'azul': '#0099C6',
+   'azul-2': '#3366CC',
+   'roxo': '#990099',
+   'amarelo': '#ff9900',
+};
+
 const componentScale = {
    'total': 100,
    '1/4': 33.33,
@@ -148,4 +169,5 @@ export const theme = {
    fontScale,
    colors,
    neutralColors,
+   uiColors,
 }

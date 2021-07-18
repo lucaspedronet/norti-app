@@ -26,9 +26,10 @@ export const TitleCategory = styled.Text.attrs({ numberOfLines: 2 })`
   color: ${({ theme }) => theme.colors.primaryLight};
 `;
 
-export const TitleChart = styled.Text.attrs({ numberOfLines: 1 })`
+export const TitleChart = styled.Text.attrs({ numberOfLines: 2 })`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: 14px;
+  text-align: center;
 
   line-height: 16px;
   padding: 8px 12px;
