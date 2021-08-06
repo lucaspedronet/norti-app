@@ -159,8 +159,8 @@ module.exports = [
         "byBusinessActivity": ["Delivery", "Marketplace"],
         "businessRevenueModel": "Marketplace",
         "businessTargetAudience": ["B2B2C (Business to Business to Consumer)", "B2B (Business to Business)"]
-      },
-      "softwareDevelopmentCategory": {
+    },
+    "softwareDevelopmentCategory": {
          "processDevelopment": ["Agile software development", "Kanban"],
          "timeDevelopment": "Até 6 meses",
          "implementProjectAdapter": "Implementada parcialmente e adaptada aos projetos",

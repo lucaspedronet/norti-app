@@ -44,7 +44,7 @@ const Dashboard: React.FC = ({ route }) => {
       { x: 'C#', y: 14.3, },
     ],
     city: [
-      { x: 'Araguína', y: 15.4, },
+      { x: 'Araguaína', y: 15.4, },
       { x: 'Belém', y: 21.4 },
       { x: 'Palmas', y: 57.1 },
       { x: 'Macapá', y: 7.1 },
@@ -86,6 +86,33 @@ const Dashboard: React.FC = ({ route }) => {
       { y: 9.1, x: "Recurso Humano"},
       { y: 9.1, x: "Responder as\nmudanças de projeto"},
       { y: 9.1, x: "Visão do Projeto",},
+    ],
+    frameworksFrontend: [ 
+      { y: 28.6, x: "Angular"}, 
+      { y: 21.4, x: "JQuery"},
+      { y: 57.1, x: "ReactJS"},
+      { y: 7.1, x: "Figma",},
+      { y: 7.1, x: "VueJS",},
+      { y: 14.3, x: "Flutter"},
+      { y: 7.1, x: "Bootstrap",},
+      { y: 7.1, x: "Ionic",},
+    ],
+    frameworksBackend: [ 
+      { y: 7.1, x: "Django"},
+      { y: 7.1, x: "Express"},
+      { y: 21.4, x: "NET Core"}, 
+      { y: 21.4, x: "ASP .NET"},
+      { y: 14.3, x: "CodeIgniter"},
+      { y: 35.7, x: "Laravel"},
+      { y: 7.1, x: "Próprio"},
+      { y: 7.1, x: "NestJS"},
+      { y: 7.1, x: "Nenhum"},
+      { y: 7.1, x: "Wicket"}
+    ],
+    testMethodology: [ 
+      { y: 50, x: "TDD Test-Driven Develop"},
+      { y: 7.1, x: "Behavior Driven Develop"},
+      { y: 42.9, x: "Nenhum"},
     ],
   }
 
@@ -211,7 +238,6 @@ const Dashboard: React.FC = ({ route }) => {
       <VictoryChart
         domainPadding={{ x: [30, 20], y: [0, 0]  }}
         theme={VictoryTheme.material}
-        animate
         height={300}
         width={width}
         style={{
@@ -259,7 +285,6 @@ const Dashboard: React.FC = ({ route }) => {
         horizontal
         domainPadding={{ x: [20, 0], y: [0, 0]  }}
         theme={VictoryTheme.material}
-        animate
         height={300}
         width={width}
         style={{
@@ -330,7 +355,6 @@ const Dashboard: React.FC = ({ route }) => {
         domainPadding={{ x: [20, 0], y: [0, 0]  }}
         padding={{ top: 40, right: 10, bottom: 40, left: 90 }}
         theme={VictoryTheme.material}
-        animate
         height={300}
         width={width}
         style={{
@@ -395,7 +419,6 @@ const Dashboard: React.FC = ({ route }) => {
         domainPadding={{ x: [20, 0], y: [0, 0]  }}
         padding={{ left: 120, right: 0, bottom: 40, top: 20 }}
         theme={VictoryTheme.material}
-        animate
         height={300}
         width={width}
         style={{
@@ -444,7 +467,6 @@ const Dashboard: React.FC = ({ route }) => {
         domainPadding={{ x: [20, 0], y: [0, 0]  }}
         padding={{ left: 120, right: 10, bottom: 40, top: 40 }}
         theme={VictoryTheme.material}
-        animate
         height={300}
         width={width}
         style={{
@@ -497,7 +519,6 @@ const Dashboard: React.FC = ({ route }) => {
         domainPadding={{ x: [10, 0], y: [0, 0]  }}
         padding={{ top: 40, right: 10, bottom: 40, left: 70 }}
         theme={VictoryTheme.material}
-        animate
         height={300}
         width={width}
         style={{
@@ -512,6 +533,150 @@ const Dashboard: React.FC = ({ route }) => {
           data={data.langues}
           labels={({ datum }) => `${datum.y}%`}
           barWidth={15}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
+        
+      </VictoryChart>
+    </CardChart>
+    
+    <CardChart>
+      <TitleChart>A empresa utiliza algum destes frameworks frontend em seus projetos?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [10, 0], y: [0, 0]  }}
+        padding={{ top: 40, right: 10, bottom: 40, left: 70 }}
+        theme={VictoryTheme.material}
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.frameworksFrontend}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={15}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
+        
+      </VictoryChart>
+    </CardChart>
+
+    <CardChart>
+      <TitleChart>A empresa utiliza algum destes frameworks backend em seus projetos?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [10, 0], y: [0, 0]  }}
+        padding={{ top: 40, right: 10, bottom: 40, left: 70 }}
+        theme={VictoryTheme.material}
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.frameworksBackend}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={15}
+          labelComponent={
+            <VictoryLabel
+              dx={-30}
+              textAnchor="start"
+              backgroundPadding={[
+                { left: 0, right: 0 },
+              ]}
+              backgroundStyle={[
+                { fill: "blue", opacity: 0 }
+              ]}
+            />
+          }
+          style={{
+            data: { 
+              fill: "#0497f9",
+              width: 15
+            },
+            labels: { 
+              fontSize: 11,
+              fill: "#f2fafc",
+            }
+          }}
+        />
+        
+      </VictoryChart>
+    </CardChart>
+
+    <CardChart>
+      <TitleChart>Qual metodologia de teste é utilizada pela empresa?</TitleChart>
+      <VictoryChart
+        horizontal
+        domainPadding={{ x: [10, 0], y: [0, 0]  }}
+        padding={{ left: 90, top: 40, right: 10, bottom: 40 }}
+        theme={VictoryTheme.material}
+        height={300}
+        width={width}
+        style={{
+          background: {
+            fill: "#fff",
+
+          },
+          
+        }}
+      >
+        <VictoryBar
+          data={data.testMethodology}
+          labels={({ datum }) => `${datum.y}%`}
+          barWidth={35}
           labelComponent={
             <VictoryLabel
               dx={-30}
